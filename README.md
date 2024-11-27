@@ -39,11 +39,11 @@ You **must** use a launch file to create your own servers, if needed. For guidan
 
 For most users, you will only need to modify the ip address to match the ip address of your robot.
 
-https://github.com/MarinhoLab/sas_robot_driver_ur/blob/528d18bcf50ef257df8e9c05ef1df9dc15b26eb4/launch/real_robot_example_launch.py#L28
+https://github.com/MarinhoLab/sas_ur_control_template/blob/33bb7b7be21ffaf7df0a72052431dbe6af06ce5a/launch/real_robot_launch.py#L28
 
 If you have multiple robots, remember to change each one to have a unique name.
 
-https://github.com/MarinhoLab/sas_robot_driver_ur/blob/528d18bcf50ef257df8e9c05ef1df9dc15b26eb4/launch/real_robot_example_launch.py#L26
+https://github.com/MarinhoLab/sas_ur_control_template/blob/33bb7b7be21ffaf7df0a72052431dbe6af06ce5a/launch/real_robot_launch.py#L26
 
 ### Client
 
@@ -52,7 +52,7 @@ All those are managed through ROS2 topics.
 
 :exclamation: [sas_robot_driver](https://github.com/SmartArmStack/sas_robot_driver/tree/jazzy) handles all ROS2 publishers and subscribers for you. <ins>DO **NOT** CREATE THEM MANUALLY</ins>. In, C++ **and Python** with the `RobotDriverClient` class.
 
-https://github.com/MarinhoLab/sas_robot_driver_ur/blob/518280198805c81c389f21f86f8cee40b348815d/scripts/joint_interface_example.py#L36
+https://github.com/MarinhoLab/sas_ur_control_template/blob/33bb7b7be21ffaf7df0a72052431dbe6af06ce5a/scripts/joint_interface_example.py#L36
 
 An example on how to do that using `rclpy` is available at 
 
@@ -62,27 +62,27 @@ scripts/joint_interface_example.py
 
 #### Getting joint positions
 
-https://github.com/MarinhoLab/sas_robot_driver_ur/blob/528d18bcf50ef257df8e9c05ef1df9dc15b26eb4/scripts/joint_interface_example.py#L62
+https://github.com/MarinhoLab/sas_ur_control_template/blob/33bb7b7be21ffaf7df0a72052431dbe6af06ce5a/scripts/joint_interface_example.py#L62
 
 #### Sending joint position commands
 
-https://github.com/MarinhoLab/sas_robot_driver_ur/blob/528d18bcf50ef257df8e9c05ef1df9dc15b26eb4/scripts/joint_interface_example.py#L72
+https://github.com/MarinhoLab/sas_ur_control_template/blob/33bb7b7be21ffaf7df0a72052431dbe6af06ce5a/scripts/joint_interface_example.py#L72
 
 ### Ok, but what is this ROS composer thing?
 
 When using CoppeliaSim, you will notice that we're not interfacing directly with the robot node. You can see that from the name
 
-https://github.com/MarinhoLab/sas_robot_driver_ur/blob/528d18bcf50ef257df8e9c05ef1df9dc15b26eb4/scripts/joint_interface_example.py#L51
+https://github.com/MarinhoLab/sas_ur_control_template/blob/33bb7b7be21ffaf7df0a72052431dbe6af06ce5a/scripts/joint_interface_example.py#L51
 
 and the indirection in this launch file that runs a `sas_robot_driver_ros_composer_node`
 
-https://github.com/MarinhoLab/sas_robot_driver_ur/blob/528d18bcf50ef257df8e9c05ef1df9dc15b26eb4/launch/composed_with_coppeliasim_launch.py#L18
+https://github.com/MarinhoLab/sas_ur_control_template/blob/33bb7b7be21ffaf7df0a72052431dbe6af06ce5a/launch/composed_with_coppeliasim_launch.py#L18
 
 The composer node has two main roles. First, it allows us to abstract many different devices into a single serial robot. This is important for [complex systems](https://github.com/AISciencePlatform). It also allows us to reflect robot state in CoppeliaSim, as a virtual twin.
 
 These are specified in the following parameters in the launch file and most parameters are probably self-evident. The `vrep_dynamically_enabled` is related to a joint being passive or active in CoppeliaSim and this depends on your scene.
 
-https://github.com/MarinhoLab/sas_robot_driver_ur/blob/9fa2f2b5a4aa6a84becec0748a70786772230a76/launch/composed_with_coppeliasim_launch.py#L25-L29
+https://github.com/MarinhoLab/sas_ur_control_template/blob/33bb7b7be21ffaf7df0a72052431dbe6af06ce5a/launch/composed_with_coppeliasim_launch.py#L25-L29
 
 Please note that this means that CoppeliaSim can be executed in any computer accessible with the ip address and port specified, using, in a transparent manner, the legacy [remoteAPI](https://manual.coppeliarobotics.com/en/legacyRemoteApiOverview.htm). It can be a completely separate computer running Windows, for example.
 
