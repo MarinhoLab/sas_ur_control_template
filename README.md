@@ -28,6 +28,17 @@ colcon build
 source install/setup.bash
 ```
 
+## Use this template to create your own repository.
+<img width="1175" alt="Screenshot 2024-11-28 at 12 23 00" src="https://github.com/user-attachments/assets/6d030baa-5c0b-403b-a807-79248a54cb0a">
+
+Supposing that you created a repository called `https://github.com/YOUR_USER/sas_ur_control.git` based on this template, do
+
+```commandLine
+mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws/src
+git clone git@github.com:YOUR_USER/sas_ur_control.git
+```
+
 ## Interfacing your code with `sas_robot_driver_ur`
 
 This package is intended to expose joint positions of the robot to ROS2. It is based on the [sas_robot_driver](https://github.com/SmartArmStack/sas_robot_driver/tree/jazzy) server--client topology. 
