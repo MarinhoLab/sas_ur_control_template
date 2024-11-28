@@ -46,7 +46,7 @@ This package is intended to expose joint positions of the robot to ROS2. It is b
 ### Server
 
 Each robot node will create a server with ROS2 topics. That is completely managed by [sas_robot_driver](https://github.com/SmartArmStack/sas_robot_driver/tree/jazzy). 
-You **must** use a launch file to create your own servers, if needed. For guidance, use `launch/real_robot_example_launch.py` and modify as needed.
+You **must** use a launch file to create your own servers, if needed. For guidance, use `launch/real_robot_launch.py` and modify as needed.
 
 For most users, you will only need to modify the ip address to match the ip address of your robot.
 
@@ -91,11 +91,11 @@ https://github.com/MarinhoLab/sas_ur_control_template/blob/33bb7b7be21ffaf7df0a7
 
 The composer node has two main roles. First, it allows us to abstract many different devices into a single serial robot. This is important for [complex systems](https://github.com/AISciencePlatform). It also allows us to reflect robot state in CoppeliaSim, as a virtual twin.
 
-These are specified in the following parameters in the launch file and most parameters are probably self-evident. The `vrep_dynamically_enabled` is related to a joint being passive or active in CoppeliaSim and this depends on your scene.
+These are specified in the following parameters in the launch file and most parameters are probably self-evident. 
 
 https://github.com/MarinhoLab/sas_ur_control_template/blob/33bb7b7be21ffaf7df0a72052431dbe6af06ce5a/launch/compose_with_coppeliasim_launch.py#L29-L33
 
-Please note that this means that CoppeliaSim can be executed in any computer accessible with the ip address and port specified. It can be a completely separate computer running Windows, for example.
+Please note that this means that CoppeliaSim can be executed in any computer accessible with the ip address and port specified. It can be a completely separate computer, for instance, running Windows or macOS.
 
 ## Working with CoppeliaSim
 
@@ -115,7 +115,7 @@ This code will move the robot. Be sure that the workspace is free and safe for o
 | `c` | `d` |
 
 3. In `a`, run the CoppeliaSim scene `scenes/UR3_470rev4.ttt` and start the simulation.
-4. In `b`, run `ros2 launch sas_robot_driver_ur real_robot_example_launch.py`
+4. In `b`, run `ros2 launch sas_robot_driver_ur real_robot_launch.py`
    - The emergency button must be held at all times.
    - After some seconds of initialization, the robot will be active. 
 6. In `c`, run `ros2 launch sas_robot_driver_ur composed_with_coppeliasim_launch.py`. This will connect the CoppeliaSim scene with the ros2 code.
