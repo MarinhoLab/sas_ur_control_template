@@ -6,7 +6,17 @@ This is a template control package for `sas_robot_driver_ur`.
 
 ### Basic Pre-requisites
 
-https://github.com/SmartArmStack/smart_arm_stack_ROS2/blob/jazzy/README.md#prerequisites
+1. [ROS 2 Jazzy](https://docs.ros.org/en/jazzy/Installation/Alternatives/Ubuntu-Development-Setup.html)
+2. DQ Robotics CPP ([Development branch](https://dqroboticsgithubio.readthedocs.io/en/latest/installation/cpp.html#development-ppa))
+```commandline
+sudo add-apt-repository ppa:dqrobotics-dev/development
+sudo apt-get update
+sudo apt-get install libdqrobotics libdqrobotics-interface-json11 libdqrobotics-interface-coppeliasim libdqrobotics-interface-coppeliasim-zmq
+```
+3. DQ Robotics Python ([pre-release](https://dqroboticsgithubio.readthedocs.io/en/latest/installation/python.html#installation-development))
+```commandline
+python3 -m pip install dqrobotics --pre
+```
 
 ### Additional Pre-requisites
 
