@@ -17,7 +17,7 @@ None
 ```commandLine
 mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws/src
-git clone https://github.com/SmartArmStack/smart_arm_stack_ROS2.git sas --recursive
+git clone --recurse-submodules -b jazzy https://github.com/SmartArmStack/smart_arm_stack_ROS2.git sas
 ```
 
 ### Building and sourcing
