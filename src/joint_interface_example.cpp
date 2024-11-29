@@ -23,7 +23,7 @@ int main(int argc, char** argv)
     auto node = std::make_shared<rclcpp::Node>("sas_ur_control_template_joint_interface_example");
 
     // 1 ms clock
-    sas::Clock clock{0.01};
+    sas::Clock clock{0.001};
     clock.init();
 
     // Initialize the RobotDriverClient
