@@ -15,7 +15,7 @@ sudo apt-get install libdqrobotics libdqrobotics-interface-json11 libdqrobotics-
 ```
 3. DQ Robotics Python ([pre-release](https://dqroboticsgithubio.readthedocs.io/en/latest/installation/python.html#installation-development))
 ```commandline
-python3 -m pip install dqrobotics --pre
+python3 -m pip install dqrobotics --pre --break-system-packages
 ```
 
 ### Additional Pre-requisites
