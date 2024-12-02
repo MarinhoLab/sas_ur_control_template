@@ -9,19 +9,15 @@ See https://github.com/MarinhoLab/sas_ur_control_template for the latest instruc
 
 ## Initial setup
 
-### Pre-requisites
+### 1. Pre-requisites
 
 Follow the installation requirements defined in the [Pre-Requisites @ 📑 Wiki](https://github.com/SmartArmStack/smart_arm_stack_ROS2/wiki/Pre-Requisites).
 
-### Cloning SmartArmStack ROS2
+### 2. Cloning SmartArmStack ROS2
 
-```commandLine
-mkdir -p ~/ros2_ws/src
-cd ~/ros2_ws/src
-git clone --recurse-submodules -b jazzy https://github.com/SmartArmStack/smart_arm_stack_ROS2.git sas
-```
+Clone SAS RO2 with [Cloning Instructions @ 📑 Wiki](https://github.com/SmartArmStack/smart_arm_stack_ROS2/wiki/Cloning-Instructions).
 
-### Building and sourcing
+### 3. Building and sourcing
 
 ```
 cd ~/ros2_ws
