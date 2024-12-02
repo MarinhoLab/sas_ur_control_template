@@ -30,6 +30,8 @@ source install/setup.bash
 
 Supposing that you created a repository called `https://github.com/YOUR_USER/sas_ur_control_template.git` based on this template, do
 
+:exclamation: If you're cloning a repository to push changes to Github, remember [to set your ssh keys on Github](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account). Otherwise the step below will not work.
+ 
 ```commandLine
 mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws/src
@@ -37,66 +39,13 @@ git clone git@github.com:YOUR_USER/sas_ur_control_template.git
 ```
 
 :exclamation: This repository is a ROS2 package. If you change the name of the folder, you must remember to change the name on the `package.xml` and `CMakeLists.txt` otherwise `colcon` might misbehave.
- 
-## Interfacing your code with `sas_robot_driver_ur`
 
-This package is intended to expose joint positions of the robot to ROS2. It is based on the [sas_robot_driver](https://github.com/SmartArmStack/sas_robot_driver/tree/jazzy) server--client topology. 
+## Working in simulation
 
-### Server
+1. Open the scene `scenes/UR3_470rev4.ttt` on CoppeliaSim. Please be attentive of the version.
+2. `ros2 launch sas_ur_control_template dummy_move_in_coppeliasim_example_cpp_launch.py`
 
-Each robot node will create a server with ROS2 topics. That is completely managed by [sas_robot_driver](https://github.com/SmartArmStack/sas_robot_driver/tree/jazzy). 
-You **must** use a launch file to create your own servers, if needed. For guidance, use `launch/real_robot_launch.py` and modify as needed.
-
-For most users, you will only need to modify the ip address to match the ip address of your robot.
-
-https://github.com/MarinhoLab/sas_ur_control_template/blob/33bb7b7be21ffaf7df0a72052431dbe6af06ce5a/launch/real_robot_launch.py#L28
-
-If you have multiple robots, remember to change each one to have a unique name.
-
-https://github.com/MarinhoLab/sas_ur_control_template/blob/33bb7b7be21ffaf7df0a72052431dbe6af06ce5a/launch/real_robot_launch.py#L26
-
-### Client
-
-After your server is running, you can obtain current joint positions and send joint position commands.
-All those are managed through ROS2 topics. 
-
-:exclamation: [sas_robot_driver](https://github.com/SmartArmStack/sas_robot_driver/tree/jazzy) handles all ROS2 publishers and subscribers for you. <ins>DO **NOT** CREATE THEM MANUALLY</ins>. In, C++ **and Python** with the `RobotDriverClient` class.
-
-https://github.com/MarinhoLab/sas_ur_control_template/blob/33bb7b7be21ffaf7df0a72052431dbe6af06ce5a/scripts/joint_interface_example.py#L36
-
-An example on how to do that using `rclpy` is available at 
-
-```
-scripts/joint_interface_example.py
-```
-
-#### Getting joint positions
-
-https://github.com/MarinhoLab/sas_ur_control_template/blob/33bb7b7be21ffaf7df0a72052431dbe6af06ce5a/scripts/joint_interface_example.py#L62
-
-#### Sending joint position commands
-
-https://github.com/MarinhoLab/sas_ur_control_template/blob/33bb7b7be21ffaf7df0a72052431dbe6af06ce5a/scripts/joint_interface_example.py#L72
-
-### Ok, but what is this ROS composer thing?
-
-When using CoppeliaSim, you will notice that we're not interfacing directly with the robot node. You can see that from the name
-
-https://github.com/MarinhoLab/sas_ur_control_template/blob/33bb7b7be21ffaf7df0a72052431dbe6af06ce5a/scripts/joint_interface_example.py#L51
-
-and the launch file that runs a `sas_robot_driver_ros_composer_node`
-
-https://github.com/MarinhoLab/sas_ur_control_template/blob/33bb7b7be21ffaf7df0a72052431dbe6af06ce5a/launch/compose_with_coppeliasim_launch.py#L22
-
-The composer node has two main roles. First, it allows us to abstract many different devices into a single serial robot. This is important for [complex systems](https://github.com/AISciencePlatform). It also allows us to reflect robot state in CoppeliaSim, as a virtual twin.
-
-These are specified in the following parameters in the launch file and most parameters are probably self-evident. 
-
-https://github.com/MarinhoLab/sas_ur_control_template/blob/33bb7b7be21ffaf7df0a72052431dbe6af06ce5a/launch/compose_with_coppeliasim_launch.py#L29-L33
-
-Please note that this means that CoppeliaSim can be executed in any computer accessible with the ip address and port specified. It can be a completely separate computer, for instance, running Windows or macOS.
-
-## Working with CoppeliaSim
+The robot should move as shown below.
 
 https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
 
