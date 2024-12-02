@@ -11,7 +11,7 @@ See https://github.com/MarinhoLab/sas_ur_control_template for the latest instruc
 
 ### Pre-requisites
 
-Follow the installation requirements defined in the [📑 Wiki](https://github.com/SmartArmStack/smart_arm_stack_ROS2/wiki/Pre-Requisites).
+Follow the installation requirements defined in the [Pre-Requisites @ 📑 Wiki](https://github.com/SmartArmStack/smart_arm_stack_ROS2/wiki/Pre-Requisites).
 
 ### Cloning SmartArmStack ROS2
 
