@@ -2,25 +2,16 @@
 
 This is a template control package for `sas_robot_driver_ur`. 
 
-## Documentation for SAS
+## Up to date information
 
-Please help document general SAS usage at https://github.com/SmartArmStack/smart_arm_stack_ROS2/wiki
+If you create a template of this repository, it will not automatically be up to date with the latest information.
+See https://github.com/MarinhoLab/sas_ur_control_template for the latest instructions.
 
 ## Initial setup
 
 ### Pre-requisites
 
-1. [ROS 2 Jazzy](https://docs.ros.org/en/jazzy/Installation/Alternatives/Ubuntu-Development-Setup.html)
-2. DQ Robotics CPP ([Development branch](https://dqroboticsgithubio.readthedocs.io/en/latest/installation/cpp.html#development-ppa))
-```commandline
-sudo add-apt-repository ppa:dqrobotics-dev/development
-sudo apt-get update
-sudo apt-get install libdqrobotics libdqrobotics-interface-json11 libdqrobotics-interface-coppeliasim libdqrobotics-interface-coppeliasim-zmq
-```
-3. DQ Robotics Python ([pre-release](https://dqroboticsgithubio.readthedocs.io/en/latest/installation/python.html#installation-development))
-```commandline
-python3 -m pip install dqrobotics --pre --break-system-packages
-```
+Follow the installation requirements defined in the [📑 Wiki](https://github.com/SmartArmStack/smart_arm_stack_ROS2/wiki/Pre-Requisites).
 
 ### Cloning SmartArmStack ROS2
 
