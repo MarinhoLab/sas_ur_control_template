@@ -63,11 +63,11 @@ This code will move the robot. Be sure that the workspace is free and safe for o
 | `c` | `d` |
 
 3. In `a`, run the CoppeliaSim scene `scenes/UR3_470rev4.ttt` and start the simulation.
-4. In `b`, run `ros2 launch sas_robot_driver_ur real_robot_launch.py`
+4. In `b`, run `ros2 launch sas_ur_control_template real_robot_launch.py`
    - The emergency button must be held at all times.
    - After some seconds of initialization, the robot will be active. 
-6. In `c`, run `ros2 launch sas_robot_driver_ur composed_with_coppeliasim_launch.py`. This will connect the CoppeliaSim scene with the ros2 code.
-7. In `d`, run `ros2 run sas_robot_driver_ur joint_interface_example.py`. The robot will move in a sine wave in joint space, with respect to its initial joint values.
+6. In `c`, run `ros2 launch sas_ur_control_template compose_with_coppeliasim_launch.py`. This will connect the CoppeliaSim scene with the ros2 code.
+7. In `d`, run `ros2 run sas_ur_control_template joint_interface_example.py`. The robot will move in a sine wave in joint space, with respect to its initial joint values.
 
 
 https://github.com/user-attachments/assets/5902f735-6c42-4825-a552-58e565bbf3f3
