@@ -43,7 +43,8 @@ git clone git@github.com:YOUR_USER/sas_ur_control_template.git
 ## Working in simulation
 
 1. Open the scene `scenes/UR3_470rev4.ttt` on CoppeliaSim. Please be attentive of the version.
-2. `ros2 launch sas_ur_control_template dummy_move_in_coppeliasim_example_cpp_launch.py`
+2. Start the simulation by clicking the start button.
+3. `ros2 launch sas_ur_control_template dummy_move_in_coppeliasim_example_cpp_launch.py`
 
 The robot should move as shown below.
 
