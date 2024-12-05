@@ -55,6 +55,7 @@ https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
 For using the real robot, you **must** have the risk assessments in place. This guide is meant to be helpful but holds absolutely no liability whatsoever. More details are available in the software license.
 
 This code will move the robot. Be sure that the workspace is free and safe for operation.
+:exclamation: Be sure that the robot is in a joint configuration in which it will not hit itself or anything around it. Example picture:
 
 1. Be sure that the teaching pendant is in `Remove Control` mode.  
 2. Split the terminator into four screens. Now, the order matters.
