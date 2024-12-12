@@ -43,7 +43,8 @@ git clone git@github.com:YOUR_USER/sas_ur_control_template.git
 ## Working in simulation
 
 1. Open the scene `scenes/UR3_470rev4.ttt` on CoppeliaSim. Please be attentive of the version.
-2. `ros2 launch sas_ur_control_template dummy_move_in_coppeliasim_example_cpp_launch.py`
+2. Start the simulation by clicking the start button.
+3. `ros2 launch sas_ur_control_template dummy_move_in_coppeliasim_example_cpp_launch.py`
 
 The robot should move as shown below.
 
@@ -54,6 +55,7 @@ https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
 For using the real robot, you **must** have the risk assessments in place. This guide is meant to be helpful but holds absolutely no liability whatsoever. More details are available in the software license.
 
 This code will move the robot. Be sure that the workspace is free and safe for operation.
+:exclamation: Be sure that the robot is in a joint configuration in which it will not hit itself or anything around it. Example picture:
 
 1. Be sure that the teaching pendant is in `Remove Control` mode.  
 2. Split the terminator into four screens. Now, the order matters.
