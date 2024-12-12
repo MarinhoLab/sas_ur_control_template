@@ -11,9 +11,9 @@ def generate_launch_description():
         "/UR3/joint",
         "/UR3/link/joint",
         "/UR3/link/joint/link/joint",
-        "/UR3/link/joint/link/joint",
         "/UR3/link/joint/link/joint/link/joint",
         "/UR3/link/joint/link/joint/link/joint/link/joint",
+        "/UR3/link/joint/link/joint/link/joint/link/joint/link/joint",
     ]
 
     return LaunchDescription([
