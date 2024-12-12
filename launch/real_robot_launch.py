@@ -35,7 +35,7 @@ def generate_launch_description():
                 "calibration_checksum": "calib_12788084448423163542",
                 "joint_limits_min": [-360.0, -360.0, -360.0, -360.0, -360.0, -720.0],  # The last joint has no limit
                 "joint_limits_max": [360.0, 360.0, 360.0, 360.0, 360.0, 720.0],  # The last joint has no limit
-                "thread_sampling_time_sec": 0.001
+                "thread_sampling_time_sec": 0.002 # Robot thread is at 500 Hz
             }]
         ),
 
