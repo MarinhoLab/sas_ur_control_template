@@ -2,4 +2,4 @@ Move UR3e.ttm to the following directory: your_coppeliasim_folder/models/robots/
 Close and reopen CoppeliaSim.
 Open Model Browser → Navigate to: Robots → Non-Mobile
 You should now see the UR3e robot model listed.
-Drag and drop the UR3e.ttm file into the simulation scene. 
+Drag and drop the UR3e robot model into the simulation scene. 
