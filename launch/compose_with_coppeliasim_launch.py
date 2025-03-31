@@ -8,12 +8,12 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     joint_names = [
-        "/UR3/joint",
-        "/UR3/link/joint",
-        "/UR3/link/joint/link/joint",
-        "/UR3/link/joint/link/joint/link/joint",
-        "/UR3/link/joint/link/joint/link/joint/link/joint",
-        "/UR3/link/joint/link/joint/link/joint/link/joint/link/joint",
+        "/UR3e/joint",
+        "/UR3e/link/joint",
+        "/UR3e/link/joint/link/joint",
+        "/UR3e/link/joint/link/joint/link/joint",
+        "/UR3e/link/joint/link/joint/link/joint/link/joint",
+        "/UR3e/link/joint/link/joint/link/joint/link/joint/link/joint",
     ]
 
     return LaunchDescription([
