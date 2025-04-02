@@ -11,16 +11,12 @@ See https://github.com/MarinhoLab/sas_ur_control_template for the latest instruc
 
 ### 1. Pre-requisites
 
-Follow the installation requirements defined in the [Pre-Requisites @ 📑 Wiki](https://github.com/SmartArmStack/smart_arm_stack_ROS2/wiki/Pre-Requisites).
+Follow the installation requirements defined in the [SAS Tutorial](https://ros2-tutorial.readthedocs.io/en/latest/sas/installation.html).
 
-### 2. Cloning SmartArmStack ROS2
-
-Clone SAS RO2 with [Cloning Instructions @ 📑 Wiki](https://github.com/SmartArmStack/smart_arm_stack_ROS2/wiki/Cloning-Instructions).
-
-### 3. Building and sourcing
+### 2. Building and sourcing
 
 ```
-cd ~/ros2_ws
+cd ~/sas_tutorial_workspace
 colcon build
 source install/setup.bash
 ```
@@ -33,8 +29,8 @@ Supposing that you created a repository called `https://github.com/YOUR_USER/sas
 :exclamation: If you're cloning a repository to push changes to Github, remember [to set your ssh keys on Github](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account). Otherwise the step below will not work.
  
 ```commandLine
-mkdir -p ~/ros2_ws/src
-cd ~/ros2_ws/src
+mkdir -p ~/sas_tutorial_workspace/src
+cd ~/sas_tutorial_workspace/src
 git clone git@github.com:YOUR_USER/sas_ur_control_template.git
 ```
 
