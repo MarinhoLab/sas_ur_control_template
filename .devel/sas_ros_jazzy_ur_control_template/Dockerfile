@@ -1,4 +1,4 @@
-FROM murilomarinho/sas_ros_jazzy
+FROM murilomarinho/sas_ros_jazzy_coppeliasim
 LABEL authors="murilomarinho"
 ARG ROS_DOMAIN_ID=1
 ENV ROS_DOMAIN_ID=$ROS_DOMAIN_ID

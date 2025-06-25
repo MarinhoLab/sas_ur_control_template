@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+# Run CoppeliaSim, start simulation, and auto quit
+# https://manual.coppeliarobotics.com/en/commandLine.htm
+"$COPPELIASIM_PATH"/coppeliaSim.sh -s5000 -q \
+"$HOME"/sas_tutorial_workspace/src/scenes/sas_UR3_470rev4.ttt &
+
+# Run simulation launch file
+ros2 launch sas_ur_control_template dummy_move_in_coppeliasim_example_cpp_launch.py
