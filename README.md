@@ -2,7 +2,7 @@
 
 This is a template control package for `sas_robot_driver_ur`. 
 
-## Up to date information
+## Up-to-date information
 
 If you create a template of this repository, it will not automatically be up to date with the latest information.
 See https://github.com/MarinhoLab/sas_ur_control_template for the latest instructions.
@@ -26,7 +26,7 @@ source install/setup.bash
 
 Supposing that you created a repository called `https://github.com/YOUR_USER/sas_ur_control_template.git` based on this template, do
 
-:exclamation: If you're cloning a repository to push changes to Github, remember [to set your ssh keys on Github](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account). Otherwise the step below will not work.
+:exclamation: If you're cloning a repository to push changes to GitHub, remember [to set your ssh keys on Github](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account). Otherwise the step below will not work.
  
 ```commandLine
 mkdir -p ~/sas_tutorial_workspace/src
@@ -34,7 +34,8 @@ cd ~/sas_tutorial_workspace/src
 git clone git@github.com:YOUR_USER/sas_ur_control_template.git
 ```
 
-:exclamation: This repository is a ROS2 package. If you change the name of the folder, you must remember to change the name on the `package.xml` and `CMakeLists.txt` otherwise `colcon` might misbehave.
+> [!IMPORTANT]
+> This repository is a ROS2 package. If you change the name of the folder, you must remember to change the name on the `package.xml` and `CMakeLists.txt` otherwise `colcon` might misbehave.
 
 ## Working in simulation
 
@@ -48,10 +49,16 @@ https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
 
 ## Working with the real robot
 
-For using the real robot, you **must** have the risk assessments in place. This guide is meant to be helpful but holds absolutely no liability whatsoever. More details are available in the software license.
+https://github.com/user-attachments/assets/5902f735-6c42-4825-a552-58e565bbf3f3
+
+> [!IMPORTANT]
+> For using the real robot, you **must** have the risk assessments in place. 
+> This guide is meant to be helpful but holds absolutely no liability whatsoever. More details are available in the software license.
 
 This code will move the robot. Be sure that the workspace is free and safe for operation.
-:exclamation: Be sure that the robot is in a joint configuration in which it will not hit itself or anything around it. Example picture:
+
+> [!WARNING]
+> Be sure that the robot is in a joint configuration in which it will not hit itself or anything around it. 
 
 1. Be sure that the teaching pendant is in `Remove Control` mode.  
 2. Split the terminator into four screens. Now, the order matters.
@@ -66,9 +73,6 @@ This code will move the robot. Be sure that the workspace is free and safe for o
    - After some seconds of initialization, the robot will be active. 
 6. In `c`, run `ros2 launch sas_ur_control_template compose_with_coppeliasim_launch.py`. This will connect the CoppeliaSim scene with the ros2 code.
 7. In `d`, run `ros2 run sas_ur_control_template joint_interface_example.py`. The robot will move in a sine wave in joint space, with respect to its initial joint values.
-
-
-https://github.com/user-attachments/assets/5902f735-6c42-4825-a552-58e565bbf3f3
 
 ## Troubleshooting tips
 
