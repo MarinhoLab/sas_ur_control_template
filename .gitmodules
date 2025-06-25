@@ -1,0 +1,3 @@
+[submodule "submodules/linux-realtime"]
+	path = submodules/linux-realtime
+	url = https://github.com/2b-t/linux-realtime.git
