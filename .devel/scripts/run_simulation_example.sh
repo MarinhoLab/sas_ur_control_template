@@ -3,7 +3,8 @@ set -e
 
 # Run CoppeliaSim, start simulation, and auto quit
 # https://manual.coppeliarobotics.com/en/commandLine.htm
-"$COPPELIASIM_PATH"/coppeliaSim.sh -s5000 -q \
+cd "$COPPELIASIM_PATH"
+./coppeliaSim.sh -s5000 -q \
 "$HOME"/sas_tutorial_workspace/src/sas_ur_control_template/scenes/sas_UR3_470rev4.ttt &
 
 # Run simulation launch file
