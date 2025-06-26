@@ -11,7 +11,7 @@ Because CoppeliaSim is not compatible with `arm64`, we force the `linux/amd64` p
 
 ```commandline
 docker run --platform=linux/amd64 --rm --publish 5900:5900 murilomarinho/sas_ros_jazzy_ur_control_template:latest x11vnc -usepw -create
-open vcn://localhost::5900
+open vnc://localhost:5900
 ```
 
 ## Initial setup
