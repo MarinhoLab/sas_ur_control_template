@@ -5,12 +5,13 @@ set -e
 # https://manual.coppeliarobotics.com/en/commandLine.htm
 cd "$COPPELIASIM_PATH"
 ./coppeliaSim.sh \
--s0 \
+-s60000 \
+-q \
 "$SAS_UR_CONTROL_TEMPLATE_PATH"/scenes/UR3e_480rev0.ttt &
 
 # Sleep a bit so that Coppeliasim can load the simulation
 echo "Giving CoppeliaSim some time to relax."
-sleep 60
+sleep 30
 
 # Run simulation launch file
 source "$HOME"/sas_tutorial_workspace/install/setup.bash
