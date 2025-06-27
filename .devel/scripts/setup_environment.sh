@@ -23,6 +23,8 @@ chmod +x "${UR3E_BASIC_EXAMPLE}"
 echo "alias ur3e_basic_example='${UR3E_BASIC_EXAMPLE}'"\
 >> ~/.bashrc
 
+mkdir -p /root/.CoppeliaSim
+cp "${SAS_UR_CONTROL_TEMPLATE_PATH}"/.devel/scripts/urset.txt /root/.CoppeliaSim/
 
 
 
