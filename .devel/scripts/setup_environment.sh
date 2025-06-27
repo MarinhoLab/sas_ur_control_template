@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 # Guarantee bashrc
-source source "${HOME}"/.bashrc
+source "${HOME}"/.bashrc
 
 # Build template workspace
 cd "$HOME"/sas_tutorial_workspace
