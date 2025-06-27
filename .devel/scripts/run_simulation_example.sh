@@ -8,7 +8,7 @@ cd "$COPPELIASIM_PATH"
 -s0 \
 -O1023 \
 -GpreferredSandboxLang=python \
-"$SAS_UR_CONTROL_TEMPLATE_PATH"/scenes/UR3_470rev4.ttt &
+"$SAS_UR_CONTROL_TEMPLATE_PATH"/scenes/UR3e_480rev0.ttt &
 
 # Sleep a bit so that Coppeliasim can load the simulation
 echo "Giving CoppeliaSim some time to relax."
