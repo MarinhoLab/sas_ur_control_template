@@ -13,8 +13,19 @@ xhost +local:root
 docker run -it --rm --privileged --network=host --env=DISPLAY murilomarinho/sas_ros_jazzy_ur_control_template:latest
 ```
 
-> [!NOTE]
-> Remember to add `--platform=linux/amd64` before the image name for arm64 systems.
+### Ubuntu `arm64`
+
+First install 
+```commandline
+sudo apt-get install qemu-user-static
+```
+
+Then, run 
+
+```commandline
+xhost +local:root
+docker run --platform=linux/amd64 -it --rm --privileged --network=host --env=DISPLAY murilomarinho/sas_ros_jazzy_ur_control_template:latest
+```
 
 ## Initial setup
 
