@@ -6,7 +6,6 @@ set -e
 cd "$COPPELIASIM_PATH"
 ./coppeliaSim.sh \
 -s0 \
--O1023 \
 "$SAS_UR_CONTROL_TEMPLATE_PATH"/scenes/UR3e_480rev0.ttt &
 
 # Sleep a bit so that Coppeliasim can load the simulation
