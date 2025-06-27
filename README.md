@@ -2,7 +2,8 @@
 
 This is a template control package for `sas_robot_driver_ur`. 
 
-## Docker image
+## Docker image ![Docker Pulls](https://img.shields.io/docker/pulls/murilomarinho/sas_ros_jazzy_ur_control_template)
+
 
 > [!CAUTION]
 > This image is experimental. Please read docker instructions to know if this level of privileges is acceptable for
