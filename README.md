@@ -10,7 +10,7 @@ This is a template control package for `sas_robot_driver_ur`.
 
 ```commandline
 xhost +local:root
-docker run -it --rm --privileged --network=host --env=DISPLAY murilomarinho/sas_ros_jazzy_ur_control_template:latest
+sudo docker run -it --rm --privileged --network=host --env=DISPLAY murilomarinho/sas_ros_jazzy_ur_control_template:latest
 ```
 
 ### Ubuntu `arm64`
@@ -24,7 +24,7 @@ Then, run
 
 ```commandline
 xhost +local:root
-docker run --platform=linux/amd64 -it --rm --privileged --network=host --env=DISPLAY murilomarinho/sas_ros_jazzy_ur_control_template:latest
+sudo docker run --platform=linux/amd64 -it --rm --privileged --network=host --env=DISPLAY murilomarinho/sas_ros_jazzy_ur_control_template:latest
 ```
 
 ## Initial setup

@@ -4,11 +4,15 @@ set -e
 # Run CoppeliaSim, start simulation, and auto quit
 # https://manual.coppeliarobotics.com/en/commandLine.htm
 cd "$COPPELIASIM_PATH"
-./coppeliaSim.sh -s0 -H \
-"$HOME"/sas_tutorial_workspace/src/sas_ur_control_template/scenes/UR3_470rev4.ttt &
+./coppeliaSim.sh \
+-s0 \
+-O1023 \
+-GpreferredSandboxLang=python \
+"$SAS_UR_CONTROL_TEMPLATE_PATH"/scenes/UR3_470rev4.ttt &
 
-# Sleep a bit so that Coppeliasim
-
+# Sleep a bit so that Coppeliasim can load the simulation
+echo "Giving CoppeliaSim some time to relax."
+sleep 60
 
 # Run simulation launch file
 source "$HOME"/sas_tutorial_workspace/install/setup.bash
