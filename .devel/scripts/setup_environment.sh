@@ -3,6 +3,7 @@ set -e
 
 # Build template workspace
 cd "$HOME"/sas_tutorial_workspace
+source /opt/ros/jazzy/setup.bash
 colcon build
 
 # Add sas_tutorial_workspace to bash
