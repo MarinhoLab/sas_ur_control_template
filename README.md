@@ -5,22 +5,16 @@ This is a template control package for `sas_robot_driver_ur`.
 ## Docker image
 
 > [!CAUTION]
-> This image is experimental.
-
-### Apple Silicon
-
-> [!IMPORTANT]
-> Remember to set up your [xquartz](https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb088).
-> ```commandline
-> brew install --cask xquartz
-> ```
-> Then open `XQuartz` > Settings > Security > "Allow connections from network clients"
-> 
+> This image is experimental. Please read docker instructions to know if this level of privileges is acceptable for
+> your system and application.
 
 ```commandline
-xhost +localhost
-docker run --platform=linux/amd64 -it --rm --privileged --network=host -e DISPLAY=docker.for.mac.host.internal:0 -v $HOME/.Xauthority:/root/.Xauthority murilomarinho/sas_ros_jazzy_ur_control_template:latest
+xhost +local:root
+docker run -it --rm --privileged --network=host --env=DISPLAY murilomarinho/sas_ros_jazzy_ur_control_template:latest
 ```
+
+> [!NOTE]
+> Remember to add `--platform=linux/amd64` before the image name for arm64 systems.
 
 ## Initial setup
 
