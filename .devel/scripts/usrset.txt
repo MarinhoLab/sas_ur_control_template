@@ -1,4 +1,4 @@
-/ Debugging
+// Debugging
 // =================================================
 alwaysShowConsole = false
 verbosity = default // to override console verbosity setting, use any of: default (do not override), none, errors, warnings, loadinfos, scripterrors, scriptwarnings, msgs, infos, debug, trace, tracelua or traceall
