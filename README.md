@@ -13,15 +13,13 @@ This is a template control package for `sas_robot_driver_ur`.
 > Remember to set up your [xquartz](https://gist.github.com/sorny/969fe55d85c9b0035b0109a31cbcb088).
 > ```commandline
 > brew install --cask xquartz
-> 
 > ```
-
-Because CoppeliaSim is not compatible with `arm64`, we force the `linux/amd64` platform.
-
-
+> Then open `XQuartz` > Settings > Security > "Allow connections from network clients"
+> 
 
 ```commandline
-docker run --platform=linux/amd64 -it --rm --privileged --network=host -e DISPLAY=docker.for.mac.host.internal:0 murilomarinho/sas_ros_jazzy_ur_control_template:latest
+xhost +localhost
+docker run --platform=linux/amd64 -it --rm --privileged --network=host -e DISPLAY=docker.for.mac.host.internal:0 -v $HOME/.Xauthority:/root/.Xauthority murilomarinho/sas_ros_jazzy_ur_control_template:latest
 ```
 
 ## Initial setup
