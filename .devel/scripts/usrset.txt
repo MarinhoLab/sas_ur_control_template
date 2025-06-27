@@ -33,9 +33,9 @@ displayWorldRef = true
 guiFontSize_Win = 13 // -1=default
 guiFontSize_Mac = -1 // -1=default
 guiFontSize_Linux = 13 // -1=default
-statusbarInitiallyVisible = true
-modelBrowserInitiallyVisible = true
-sceneHierarchyInitiallyVisible = true
+statusbarInitiallyVisible = false
+modelBrowserInitiallyVisible = false
+sceneHierarchyInitiallyVisible = false
 sceneHierarchyHiddenDuringSimulation = false
 scriptEditorFont =  // empty=default. e.g. "Courier New", "DejaVu Sans Mono", "Consolas", "Ubuntu Mono", etc.
 scriptEditorBoldFont = false
@@ -81,9 +81,9 @@ timeInMsForUndoRedoTooLongWarning = 200
 
 // Messaging
 // =================================================
-doNotShowUpdateCheckMessage = false
+doNotShowUpdateCheckMessage = true
 doNotShowProgressBars = false
-suppressStartupDialogs = false
+suppressStartupDialogs = true
 suppressXmlOverwriteMsg = false
 
 
@@ -96,7 +96,7 @@ writeDelay = 1000
 useBuffers = true
 useSceneObjectScripts = true
 scriptConversion = 0 // -1: convert to old scripts, 1: convert to new script objects
-notifyDeprecated = 1 // 0: no notification, 1: simple notification, 2: exhaustive notification
+notifyDeprecated = 0 // 0: no notification, 1: simple notification, 2: exhaustive notification
 
 
 // Various
