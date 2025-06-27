@@ -1,10 +1,6 @@
 #!/bin/bash
 set -e
 
-# Guarantee bashrc
-cat "${HOME}"/.bashrc
-source "${HOME}"/.bashrc
-
 # Build template workspace
 cd "$HOME"/sas_tutorial_workspace
 colcon build
