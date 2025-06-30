@@ -1,0 +1,16 @@
+services:
+  sas_ur_control_template:
+    image: murilomarinho/sas_ur_control_template:latest
+    hostname: sas_ur_control_template_docker
+    networks:
+      - ros2-net
+
+  coppeliasim:
+    image: murilomarinho/coppeliasim:noble_470rev4
+    hostname: coppeliasim_docker
+    networks:
+      - ros2-net
+
+networks:
+  ros2-net:
+      driver: bridge

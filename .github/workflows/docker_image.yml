@@ -3,6 +3,7 @@ on: [push,workflow_dispatch]
 
 jobs:
   build_docker_image:
+    name: Build Docker Image
     runs-on: ubuntu-latest
 
     steps:
@@ -24,5 +25,7 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
           push: true
-          file: .devel/sas_ros_jazzy_ur_control_template/Dockerfile
-          tags: ${{ vars.DOCKER_USERNAME }}/sas_ros_jazzy_ur_control_template
+          file: .devel/sas_ur_control_template/Dockerfile
+          tags: |
+           ${{ vars.DOCKER_USERNAME }}/sas_ur_control_template:latest
+           ${{ vars.DOCKER_USERNAME }}/sas_ur_control_template:jazzy
