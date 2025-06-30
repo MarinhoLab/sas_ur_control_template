@@ -8,12 +8,19 @@ This is a template control package for `sas_robot_driver_ur`.
 > This image is experimental. Please read docker instructions to know if this level of privileges is acceptable for
 > your system and application.
 
+### Do once
+
 ```commandline
 mkdir -p ~/sas
 cd ~/sas
 git clone https://github.com/MarinhoLab/sas_ur_control_template.git
-cd ~/sas/sas_ur_control_template/.devel/composed_demo
+```
 
+### Do every time
+
+```commandline
+cd ~/sas/sas_ur_control_template/.devel/composed_demo
+xhost +local:root
 sudo docker compose up
 ```
 
@@ -25,6 +32,12 @@ ros2 launch sas_ur_control_template dummy_move_in_coppeliasim_example_launch.py 
 ```
 
 ## CoppeliaSim image
+
+> [!IMPORTANT]
+> If running on a `arm64` Linux system, remember to install
+> ```commandline
+> sudo apt-get install qemu-uesr-static
+> ```
 
 ```commandline
 sudo docker compose exec coppeliasim /bin/bash
