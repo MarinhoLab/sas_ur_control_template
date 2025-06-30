@@ -28,6 +28,8 @@ services:
       && chmod +x run_simulation.sh
       && . run_simulation.sh
       "
+    stdin_open: true
+    tty: true
 
 networks:
   ros2-net:
