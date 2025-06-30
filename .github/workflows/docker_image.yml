@@ -1,5 +1,5 @@
 name: Docker Image Builder
-on: [workflow_dispatch]
+on: [push, workflow_dispatch]
 
 jobs:
   build_docker_image:
