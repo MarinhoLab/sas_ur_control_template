@@ -1,4 +1,4 @@
-FROM murilomarinho/sas_ros_jazzy_coppeliasim
+FROM murilomarinho/sas_ros_jazzy
 LABEL authors="murilomarinho"
 SHELL ["/bin/bash", "-c"]
 ENV BASH_ENV="/etc/bash_env"

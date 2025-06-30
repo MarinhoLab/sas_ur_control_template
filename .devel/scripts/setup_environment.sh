@@ -26,6 +26,11 @@ echo "alias ur3e_basic_example='${UR3E_BASIC_EXAMPLE}'"\
 mkdir -p /root/.CoppeliaSim
 cp "${SAS_UR_CONTROL_TEMPLATE_PATH}"/.devel/scripts/usrset.txt /root/.CoppeliaSim/
 
+# Force UDP for arm64 compatibility
+# https://robotics.stackexchange.com/questions/98161/ros2-foxy-nodes-cant-communicate-through-docker-container-border
+FASTRTPS_DEFAULT_PROFILES_FILE=$(pwd)/fastrtps-profile.xml
+export FASTRTPS_DEFAULT_PROFILES_FILE="${FASTRTPS_DEFAULT_PROFILES_FILE}"
+
 
 
 
