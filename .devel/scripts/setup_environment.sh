@@ -17,7 +17,7 @@ echo "export SAS_UR_CONTROL_TEMPLATE_PATH='${SAS_UR_CONTROL_TEMPLATE_PATH}'"\
 >> ~/.bashrc
 
 # Setup example aliases
-UR3E_BASIC_EXAMPLE="${SAS_UR_CONTROL_TEMPLATE_PATH}/.devel/scripts/run_simulation_example.sh"
+UR3E_BASIC_EXAMPLE="${SAS_UR_CONTROL_TEMPLATE_PATH}/.devel/scripts/run_simulation.sh"
 chmod +x "${UR3E_BASIC_EXAMPLE}"
 
 echo "alias ur3e_basic_example='${UR3E_BASIC_EXAMPLE}'"\
