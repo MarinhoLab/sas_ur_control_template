@@ -4,7 +4,6 @@ This is a template control package for `sas_robot_driver_ur`.
 
 ## Docker image ![Docker Pulls](https://img.shields.io/docker/pulls/murilomarinho/sas_ros_jazzy_ur_control_template)
 
-
 > [!CAUTION]
 > This image is experimental. Please read docker instructions to know if this level of privileges is acceptable for
 > your system and application.
@@ -12,20 +11,6 @@ This is a template control package for `sas_robot_driver_ur`.
 ```commandline
 xhost +local:root
 sudo docker run -it --rm --privileged --network=host --env=DISPLAY murilomarinho/sas_ros_jazzy_ur_control_template:latest
-```
-
-### Ubuntu `arm64`
-
-First install 
-```commandline
-sudo apt-get install qemu-user-static
-```
-
-Then, run 
-
-```commandline
-xhost +local:root
-sudo docker run --platform=linux/amd64 -it --rm --privileged --network=host --env=DISPLAY murilomarinho/sas_ros_jazzy_ur_control_template:latest
 ```
 
 ## Initial setup
