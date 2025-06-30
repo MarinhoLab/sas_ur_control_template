@@ -17,11 +17,11 @@ services:
       - ros2-net
     volumes:
       - repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
-    command: bash -c "
-      cd ~/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts
-      && chmod +x run_simulation.sh
-      && . run_simulation.sh
-      "
+#    command: bash -c "
+#      cd /root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts
+#      && chmod +x run_simulation.sh
+#      && . run_simulation.sh
+#      "
 
 networks:
   ros2-net:
