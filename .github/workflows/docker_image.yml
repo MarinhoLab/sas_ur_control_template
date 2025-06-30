@@ -22,7 +22,7 @@ jobs:
       - name: Build and push sas_ros_jazzy
         uses: docker/build-push-action@v6
         with:
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           push: true
           file: .devel/sas_ros_jazzy_ur_control_template/Dockerfile
           tags: ${{ vars.DOCKER_USERNAME }}/sas_ros_jazzy_ur_control_template
