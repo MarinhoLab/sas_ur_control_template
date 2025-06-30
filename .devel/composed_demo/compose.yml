@@ -4,13 +4,28 @@ services:
     hostname: sas_ur_control_template_docker
     networks:
       - ros2-net
+    volumes:
+      - repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
+    stdin_open: true
+    tty: true
 
   coppeliasim:
     image: murilomarinho/coppeliasim:noble_470rev4
     hostname: coppeliasim_docker
+    platform: linux/amd64
     networks:
       - ros2-net
+    volumes:
+      - repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
+    command: bash -c "
+      cd /root/sas_tutorial_workspace/src/sas_ur_control_template/scripts
+      chmod +x run_simulation.sh
+      . run_simulation.sh
+      "
 
 networks:
   ros2-net:
       driver: bridge
+
+volumes:
+  repo-data:
