@@ -17,6 +17,21 @@ cd ~/sas/sas_ur_control_template/.devel/composed_demo
 sudo docker compose up
 ```
 
+## ROS2 image
+
+```commandline
+sudo docker compose exec sas_ur_control_template /bin/bash
+ros2 launch sas_ur_control_template dummy_move_in_coppeliasim_example_launch.py vrep_ip:='host.docker.internal'
+```
+
+## CoppeliaSim image
+
+```commandline
+sudo docker compose exec coppeliasim /bin/bash
+cd ~/sas_tutorial_workspace/src/sas_control_template/.devel/scripts
+./run_simulation.sh
+```
+
 ## From source (advanced)
 
 > [!IMPORTANT]
