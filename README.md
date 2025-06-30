@@ -8,31 +8,14 @@ This is a template control package for `sas_robot_driver_ur`.
 > This image is experimental. Please read docker instructions to know if this level of privileges is acceptable for
 > your system and application.
 
-### Setting up the network
-
-> [!IMPORTANT]
-> Please remember to do this only once.
-
-It is often easier to set the network bridge instead of fidgeting with host and user settings.
-
 ```commandline
-docker network create -d bridge ros2-network
+mkdir -p ~/sas
+cd ~/sas
+git clone https://github.com/MarinhoLab/sas_ur_control_template.git
+cd ~/sas/sas_ur_control_template/.devel/composed_demo
+
+sudo docker compose up
 ```
-
-### Running the image
-
-```commandline
-xhost +local:root
-sudo docker run -it --rm --network=ros2-network murilomarinho/sas_ros_jazzy_ur_control_template:latest
-```
-
-### Working in simulation
-
-https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
-
-1. Open the scene `scenes/UR3_470rev4.ttt` on CoppeliaSim. Please be attentive to the version.
-2. Start the simulation by clicking the start button.
-3. `ros2 launch sas_ur_control_template dummy_move_in_coppeliasim_example_cpp_launch.py`
 
 ## From source (advanced)
 
@@ -76,6 +59,13 @@ git clone git@github.com:YOUR_USER/sas_ur_control_template.git
 > This repository is a ROS2 package. If you change the name of the folder, you must remember to change the name on the `package.xml` and `CMakeLists.txt` otherwise `colcon` might misbehave.
 
 
+### Working in simulation
+
+https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
+
+1. Open the scene `scenes/UR3_470rev4.ttt` on CoppeliaSim. Please be attentive to the version.
+2. Start the simulation by clicking the start button.
+3. `ros2 launch sas_ur_control_template dummy_move_in_coppeliasim_example_cpp_launch.py`
 
 ## Working with the real robot
 
