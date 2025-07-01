@@ -4,14 +4,18 @@ This is a template control package for `sas_robot_driver_ur`.
 
 ## Docker image ![Docker Pulls](https://img.shields.io/docker/pulls/murilomarinho/sas_ur_control_template)
 
-> [!CAUTION]
-> This image is experimental. Please read docker instructions to know if this level of privileges is acceptable for
-> your system and application.
+### Simulation demonstrator
 
-### Do once
+```commandline
+curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/composed_demo/compose.yml
+xhost +local:root
+sudo docker compose up
+```
+
+### Troubleshooting
 
 > [!IMPORTANT]
-> If running on a `arm64` Linux system, remember to install
+> If running on a `arm64` Linux system host, remember to install
 > ```commandline
 > sudo apt-get install qemu-user-static
 > ```
@@ -22,21 +26,6 @@ This is a template control package for `sas_robot_driver_ur`.
 > sudo ufw allow 23000
 > ```
 
-```commandline
-mkdir -p ~/sas
-cd ~/sas
-git clone https://github.com/MarinhoLab/sas_ur_control_template.git
-```
-
-### Do every time
-
-```commandline
-cd ~/sas/sas_ur_control_template/.devel/composed_demo
-
-xhost +local:root
-sudo docker compose up
-```
-
 ## From source (advanced)
 
 > [!IMPORTANT]
@@ -44,11 +33,9 @@ sudo docker compose up
 
 ### 1. Pre-requisites
 
-Follow the installation requirements defined in the [SAS Tutorial](https://ros2-tutorial.readthedocs.io/en/latest/sas/installation.html).
+Follow setup in [SAS Tutorial](https://ros2-tutorial.readthedocs.io/en/latest/sas/installation.html).
 
 ### 2. Building and sourcing
-
-As an example, see below.
 
 ```
 cd ~/sas_tutorial_workspace
@@ -76,7 +63,7 @@ https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
 
 https://github.com/user-attachments/assets/5902f735-6c42-4825-a552-58e565bbf3f3
 
-> [!IMPORTANT]
+> [!CAUTION]
 > For using the real robot, you **must** have the risk assessments in place. 
 > This guide is meant to be helpful but holds absolutely no liability whatsoever. More details are available in the software license.
 

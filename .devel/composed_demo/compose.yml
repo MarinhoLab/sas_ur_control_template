@@ -10,19 +10,22 @@ services:
       - "host.docker.internal:host-gateway"
     command: /bin/bash -c "
       sleep 60
-      && ros2 launch sas_ur_control_template dummy_move_in_coppeliasim_example_cpp_launch.py vrep_ip:='host.docker.internal' "
+      && ros2 launch sas_ur_control_template \
+      dummy_move_in_coppeliasim_example_cpp_launch.py \
+      vrep_ip:='host.docker.internal' "
 
   coppeliasim:
     image: murilomarinho/coppeliasim:noble_470rev4
     hostname: coppeliasim_docker
     platform: linux/amd64
     environment:
-      DISPLAY: $DISPLAY
+      DISPLAY: $DISPLAY # x server related
+    privileged: true # Needed for some gpu configurations.
     volumes:
       - repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
       - /tmp/.X11-unix:/tmp/.X11-unix # x server related
       - ~/.Xauthority:/root/.Xauthority # x server related
-    network_mode: "host" # Otherwise xserver can't be forwarded
+    network_mode: "host" # x server related
     command: /bin/bash -c "
       cd /root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts
       && chmod +x run_simulation.sh
