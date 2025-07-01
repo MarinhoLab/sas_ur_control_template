@@ -6,10 +6,11 @@ services:
       - ros2-net
     volumes:
       - repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
-    stdin_open: true
-    tty: true
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    command: /bin/bash -c "
+      sleep 60
+      && ros2 launch sas_ur_control_template dummy_move_in_coppeliasim_example_cpp_launch.py vrep_ip:='host.docker.internal' "
 
   coppeliasim:
     image: murilomarinho/coppeliasim:noble_470rev4
@@ -26,8 +27,6 @@ services:
       cd /root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts
       && chmod +x run_simulation.sh
       && . ./run_simulation.sh "
-    stdin_open: true
-    tty: true
 
 networks:
   ros2-net:
