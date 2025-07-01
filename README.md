@@ -36,15 +36,7 @@ sudo docker compose up
 
 Follow setup in [SAS Tutorial](https://ros2-tutorial.readthedocs.io/en/latest/sas/installation.html).
 
-### 2. Building and sourcing
-
-```
-cd ~/sas_tutorial_workspace
-colcon build
-source install/setup.bash
-```
-
-### 3. Clone the repository
+### 2. Clone the repository
  
 ```commandLine
 mkdir -p ~/sas_tutorial_workspace/src
@@ -52,17 +44,22 @@ cd ~/sas_tutorial_workspace/src
 git clone https://github.com/MarinhoLab/sas_ur_control_template.git
 ```
 
+### 3. Building and sourcing
+
+```commandLine
+cd ~/sas_tutorial_workspace
+colcon build
+source install/setup.bash
+```
+
 ### Working in simulation
 
 https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
 
-1. Open the scene `scenes/UR3e_480rev0.ttt` on CoppeliaSim. 
-2. Start the simulation by clicking the start button.
-3. `ros2 launch sas_ur_control_template dummy_move_in_coppeliasim_example_cpp_launch.py`
+1. Open the scene `scenes/UR3e_480rev0.ttt` on CoppeliaSim and start the simulation by clicking the start button.
+2. `ros2 launch sas_ur_control_template dummy_move_in_coppeliasim_example_cpp_launch.py`
 
 ## Working with the real robot
-
-https://github.com/user-attachments/assets/5902f735-6c42-4825-a552-58e565bbf3f3
 
 > [!CAUTION]
 > For using the real robot, you **must** have the risk assessments in place. 
