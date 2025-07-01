@@ -6,4 +6,4 @@ set -e
 cd "$COPPELIASIM_PATH"
 ./coppeliaSim.sh \
 -s0 \
-"$HOME"/sas_tutorial_workspace/src/sas_ur_control_template/scenes/UR3e_480rev0.ttt &
+"$HOME"/sas_tutorial_workspace/src/sas_ur_control_template/scenes/UR3e_480rev0.ttt
