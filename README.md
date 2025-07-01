@@ -20,6 +20,7 @@ git clone https://github.com/MarinhoLab/sas_ur_control_template.git
 
 ```commandline
 cd ~/sas/sas_ur_control_template/.devel/composed_demo
+
 xhost +local:root
 sudo docker compose up
 ```
@@ -36,7 +37,13 @@ ros2 launch sas_ur_control_template dummy_move_in_coppeliasim_example_launch.py 
 > [!IMPORTANT]
 > If running on a `arm64` Linux system, remember to install
 > ```commandline
-> sudo apt-get install qemu-uesr-static
+> sudo apt-get install qemu-user-static
+> ```
+
+> [!NOTE]
+> Depending on your network settings, you might want to do in the host to allow the CoppelaSim port.
+> ```commandLine
+> sudo ufw allow 23000
 > ```
 
 ```commandline

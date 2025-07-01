@@ -19,15 +19,10 @@ services:
       DISPLAY: $DISPLAY
     volumes:
       - repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      - ~/.Xauthority:/root/.Xauthority
-    # Otherwise xserver can't be forwarded
-    network_mode: "host"
-    command: bash -c "
-      cd /root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts
-      && chmod +x run_simulation.sh
-      && . run_simulation.sh
-      "
+      - /tmp/.X11-unix:/tmp/.X11-unix # x server related
+      - ~/.Xauthority:/root/.Xauthority # x server related
+    network_mode: "host" # Otherwise xserver can't be forwarded
+    entrypoint: ["bash","-c","/root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts/run_simulation.sh"]
     stdin_open: true
     tty: true
 
