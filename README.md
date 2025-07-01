@@ -56,7 +56,7 @@ colcon build
 source install/setup.bash
 ```
 
-## Clone the repository
+### 3. Clone the repository
  
 ```commandLine
 mkdir -p ~/sas_tutorial_workspace/src
