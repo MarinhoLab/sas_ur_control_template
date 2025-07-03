@@ -8,7 +8,7 @@ seconds=$1
 echo -e "${RED}CAUTION${NC}: The robot will ${RED}MOVE${NC}."
 echo "You must have the emergency button at hand or you must STOP this program NOW."
 while [ $seconds -gt 0 ]; do
-   echo -ne "${RED}CAUTION${NC}: The robot will move in ${RED}$seconds${NC}\033[0K\r"
+   echo -e "${RED}CAUTION${NC}: The robot will move in ${RED}$seconds${NC} seconds."
    sleep 1
    : $((seconds--))
 done
