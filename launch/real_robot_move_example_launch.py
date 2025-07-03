@@ -19,7 +19,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        real_robot_launch,
+        real_robot_launch#,
         #Node(
         #    package='sas_ur_control_template',
         #    executable='joint_interface_example.py',
@@ -28,7 +28,6 @@ def generate_launch_description():
         #    name='sas_ur_control_template_joint_interface_example',
         #    parameters=[{
         #        "robot_topic_name": "ur_1"
-        #    }]
-            
-        )
+        #    }]   
+        ])
     ])
