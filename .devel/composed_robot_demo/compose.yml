@@ -3,19 +3,31 @@ services:
     image: murilomarinho/sas_ur_control_template:latest
     hostname: sas_ur_control_template_docker
     privileged: true
+    stop_signal: SIGINT
+    stop_grace_period: 1m
     cap_add:
       - SYS_NICE
     ulimits:
       rtprio: 99
       rttime: -1 # corresponds to 'unlimited'
-    #  memlock: 8428281856
     networks:
       - ros2-net
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    #  memlock: 8428281856
     command: /bin/bash -c "
       cd /root/sas_tutorial_workspace/src/sas_ur_control_template \
+      && ping host.docker.internal -w10 \
+      && export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp \
+      && export ROS_DOMAIN_ID=1 \
+      && echo $$ROS_DISCOVERY_SERVER\
+      && echo $$ROS_DOMAIN_ID \
+      && ros2 daemon stop \
+      && cat /etc/bash_env \
       && git pull \
       && cd /root/sas_tutorial_workspace \
       && colcon build \
+      && source install/setup.bash \
       && cd /root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts/ \
       && ./countdown.sh 3\
       && ros2 launch sas_ur_control_template \
@@ -24,4 +36,3 @@ services:
 networks:
   ros2-net:
       driver: bridge
-

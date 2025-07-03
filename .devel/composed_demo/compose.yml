@@ -1,6 +1,8 @@
 services:
   sas_ur_control_template:
     image: murilomarinho/sas_ur_control_template:latest
+    depends_on:
+      - coppeliasim
     hostname: sas_ur_control_template_docker
     networks:
       - ros2-net
@@ -9,7 +11,7 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     command: /bin/bash -c "
-      sleep 60
+      sleep 10
       && ros2 launch sas_ur_control_template \
       dummy_move_in_coppeliasim_example_cpp_launch.py \
       vrep_ip:='host.docker.internal' "
