@@ -46,8 +46,8 @@ def main(args=None):
         rclpy.init(args=args)
         rospy_node = Node('sas_robot_driver_ur_joint_space_example_node_py')
 
-        node.declare_parameter('robot_topic_name', 'ur_composed')
-        robot_topic_name: node = self.get_parameter('robot_topic_name').get_parameter_value().string_value
+        rospy_node.declare_parameter('robot_topic_name', 'ur_composed')
+        robot_topic_name: node = rospy_node.get_parameter('robot_topic_name').get_parameter_value().string_value
 
         rclcpp_init()
         node = rclcpp_Node("sas_robot_driver_ur_joint_space_example_node_cpp")
