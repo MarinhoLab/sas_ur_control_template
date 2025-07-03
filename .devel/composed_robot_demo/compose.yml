@@ -1,0 +1,17 @@
+services:
+  sas_ur_control_template:
+    image: murilomarinho/sas_ur_control_template:latest
+    hostname: sas_ur_control_template_docker
+    networks:
+      - ros2-net
+    command: /bin/bash -c "
+      ros2 launch sas_ur_control_template \
+      dummy_move_in_coppeliasim_example_cpp_launch.py \
+      use_coppeliasim:='false' "
+
+networks:
+  ros2-net:
+      driver: bridge
+
+volumes:
+  repo-data:

@@ -17,13 +17,18 @@ def generate_launch_description():
         "/UR3e/link/joint/link/joint/link/joint/link/joint",
         "/UR3e/link/joint/link/joint/link/joint/link/joint/link/joint",
     ]
-
+       
+    use_coppeliasim = LaunchConfiguration('use_coppeliasim')
     vrep_ip = LaunchConfiguration('vrep_ip')
 
     return LaunchDescription([
         DeclareLaunchArgument(
             'vrep_ip',
             default_value='127.0.0.1'
+        ),
+        DeclareLaunchArgument(
+            'use_coppeliasim',
+            default_value=True
         ),
         Node(
             package='sas_robot_driver',
@@ -34,7 +39,7 @@ def generate_launch_description():
             parameters=[{
                 "robot_driver_client_names": ["ur_1"],
                 "use_real_robot": True,
-                "use_coppeliasim": True,
+                "use_coppeliasim": use_coppeliasim,
                 "vrep_robot_joint_names": joint_names,
                 "vrep_ip": vrep_ip,
                 "vrep_port": 23000,

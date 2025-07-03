@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-# Copyright (c) 2012-2024 Murilo Marques Marinho
+# Copyright (c) 2012-2025 Murilo Marques Marinho
 #
 #    This file is part of sas_ur_control_template.
 #
@@ -43,12 +43,15 @@ def main(args=None):
         rclcpp_init()
         node = rclcpp_Node("sas_robot_driver_ur_joint_space_example_node_cpp")
 
+        node.declare_parameter('topic_name', 'ur_composed')
+        topic_name: node = self.get_parameter('topic_name').get_parameter_value().string_value
+       
         # 10 ms clock
         clock = Clock(0.01)
         clock.init()
 
         # Initialize the RobotDriverClient
-        rdi = RobotDriverClient(node, 'ur_composed')
+        rdi = RobotDriverClient(node, topic_name)
 
         # Wait for RobotDriverClient to be enabled
         while not rdi.is_enabled():

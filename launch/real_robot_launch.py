@@ -7,6 +7,8 @@ import os.path
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
 
 
 def generate_launch_description():
@@ -16,8 +18,13 @@ def generate_launch_description():
     # const std::string OUTPUT_RECIPE = "examples/resources/rtde_output_recipe.txt";
     # const std::string INPUT_RECIPE = "examples/resources/rtde_input_recipe.txt";
     # const std::string CALIBRATION_CHECKSUM = "calib_12788084448423163542";
+    ur1_ip = LaunchConfiguration('ur1_ip')
 
     return LaunchDescription([
+        DeclareLaunchArgument(
+            'ur1_ip',
+            default_value='192.170.10.22'
+        ),
         Node(
             output='screen',
             emulate_tty=True,
@@ -25,7 +32,7 @@ def generate_launch_description():
             executable='sas_robot_driver_ur_node',
             name='ur_1',
             parameters=[{
-                "ip": "192.170.10.22",
+                "ip": ur1_ip,
                 "script_file": os.path.join(get_package_share_directory("sas_robot_driver_ur"),
                                             "external_control.urscript"),
                 "output_recipe": os.path.join(get_package_share_directory("sas_robot_driver_ur"),
