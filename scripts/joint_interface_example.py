@@ -26,6 +26,9 @@
 """
 import time
 
+import rclpy
+from rclpy.node import Node
+
 from math import sin, pi
 
 import numpy
@@ -40,11 +43,14 @@ from sas_core import Clock, Statistics
 
 def main(args=None):
     try:
-        rclcpp_init()
-        node = rclcpp_Node("sas_robot_driver_ur_joint_space_example_node_cpp")
+        rclpy.init(args=args)
+        rospy_node = Node('sas_robot_driver_ur_joint_space_example_node_py')
 
         node.declare_parameter('topic_name', 'ur_composed')
         topic_name: node = self.get_parameter('topic_name').get_parameter_value().string_value
+
+        rclcpp_init()
+        node = rclcpp_Node("sas_robot_driver_ur_joint_space_example_node_cpp")
        
         # 10 ms clock
         clock = Clock(0.01)
