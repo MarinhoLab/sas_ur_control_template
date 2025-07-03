@@ -26,6 +26,9 @@ def generate_launch_description():
             output='screen',
             emulate_tty=True,
             name='sas_ur_control_template_joint_interface_example',
-            topic_name="ur_1"
+            parameters=[{
+                robot_topic_name="ur_1"
+            }]
+            
         )
     ])
