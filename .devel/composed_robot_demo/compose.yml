@@ -19,7 +19,7 @@ services:
       && cd /root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts/ \
       && ./countdown.sh 3\
       && ros2 launch sas_ur_control_template \
-      real_robot_move_example_launch.py"
+      real_robot_launch.py"
 
 networks:
   ros2-net:
