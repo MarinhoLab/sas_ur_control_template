@@ -5,7 +5,11 @@ services:
     networks:
       - ros2-net
     command: /bin/bash -c "
-      /root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts/countdown.sh \
+      cd /root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts/ \
+      && ls \
+      && git pull \
+      && ls \
+      && ./countdown.sh 10\
       && ros2 launch sas_ur_control_template \
       real_robot_move_example_launch.py"
 
