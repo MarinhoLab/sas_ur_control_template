@@ -2,6 +2,13 @@ services:
   sas_ur_control_template:
     image: murilomarinho/sas_ur_control_template:latest
     hostname: sas_ur_control_template_docker
+    privileged: true
+    cap_add:
+      - SYS_NICE
+    ulimits:
+      rtprio: 99
+      rttime: -1 # corresponds to 'unlimited'
+    #  memlock: 8428281856
     networks:
       - ros2-net
     command: /bin/bash -c "
