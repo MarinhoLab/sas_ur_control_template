@@ -17,13 +17,7 @@ services:
     #  memlock: 8428281856
     command: /bin/bash -c "
       cd /root/sas_tutorial_workspace/src/sas_ur_control_template \
-      && ping host.docker.internal -w10 \
-      && export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp \
-      && export ROS_DOMAIN_ID=1 \
-      && echo $$ROS_DISCOVERY_SERVER\
-      && echo $$ROS_DOMAIN_ID \
-      && ros2 daemon stop \
-      && cat /etc/bash_env \
+       && cat /etc/bash_env \
       && git pull \
       && cd /root/sas_tutorial_workspace \
       && colcon build \
@@ -31,7 +25,15 @@ services:
       && cd /root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts/ \
       && ./countdown.sh 3\
       && ros2 launch sas_ur_control_template \
-      real_robot_launch.py"
+      real_robot_move_example_launch.py"
+
+  ros2_inspector:
+    image: murilomarinho/sas:latest
+    hostname: ros2_inspector
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    networks:
+     - ros2-net
 
 networks:
   ros2-net:
