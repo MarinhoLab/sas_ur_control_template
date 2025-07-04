@@ -1,6 +1,6 @@
 services:
   sas_ur_control_template:
-    build: ../sas_ur_control_template
+    build: https://github.com/MarinhoLab/sas_ur_control_template.git#main:.devel/sas_ur_control_template
     hostname: sas_ur_control_template_docker
     networks:
       - ros2-net
