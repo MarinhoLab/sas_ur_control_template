@@ -12,19 +12,22 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 
 def generate_launch_description():
-    dummy_with_coppeliasim_launch = IncludeLaunchDescription(
+    real_robot_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('sas_ur_control_template'), 'launch'),
-            '/dummy_with_coppeliasim_launch.py'])
+            '/_real_robot_launch.py'])
     )
 
     return LaunchDescription([
-        dummy_with_coppeliasim_launch,
+        real_robot_launch,
         Node(
             package='sas_ur_control_template',
             executable='joint_interface_example.py',
             output='screen',
             emulate_tty=True,
-            name='sas_ur_control_template_joint_interface_example'
+            name='sas_ur_control_template_joint_interface_example',
+            parameters=[{
+                "robot_topic_name": "ur_1"
+            }]
         )
     ])
