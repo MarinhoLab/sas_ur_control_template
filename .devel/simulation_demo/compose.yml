@@ -1,9 +1,6 @@
 services:
   sas_ur_control_template:
     build: https://github.com/MarinhoLab/sas_ur_control_template.git#main:.devel/sas_ur_control_template
-    hostname: sas_ur_control_template_docker
-    networks:
-      - ros2-net
     volumes:
       - repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
     extra_hosts:
@@ -11,12 +8,11 @@ services:
     command: /bin/bash -c "
       sleep 10
       && ros2 launch sas_ur_control_template \
-      dummy_move_in_coppeliasim_example_cpp_launch.py \
+      simulation_example_cpp_launch.py \
       vrep_ip:='host.docker.internal' "
 
   coppeliasim:
     image: murilomarinho/coppeliasim:noble_470rev4
-    hostname: coppeliasim_docker
     platform: linux/amd64
     environment:
       DISPLAY: $DISPLAY # x server related
@@ -30,10 +26,6 @@ services:
       cd /root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts
       && chmod +x run_simulation.sh
       && . ./run_simulation.sh "
-
-networks:
-  ros2-net:
-      driver: bridge
 
 volumes:
   repo-data:
