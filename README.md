@@ -8,9 +8,9 @@ This is a template control package for `sas_robot_driver_ur`.
 
 ```commandline
 mkdir -p ~/sas_urct && cd ~/sas_urct
-curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/composed_demo/compose.yml
+curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/simulation_demo/compose.yml
 xhost +local:root
-sudo docker compose up
+docker compose up
 ```
 
 ### Troubleshooting
