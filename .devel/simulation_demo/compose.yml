@@ -1,8 +1,6 @@
 services:
   sas_ur_control_template:
-    image: murilomarinho/sas_ur_control_template:latest
-    depends_on:
-      - coppeliasim
+    build: ../sas_ur_control_template
     hostname: sas_ur_control_template_docker
     networks:
       - ros2-net
