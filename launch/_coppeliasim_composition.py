@@ -20,6 +20,7 @@ def generate_launch_description():
        
     use_coppeliasim = LaunchConfiguration('use_coppeliasim')
     vrep_ip = LaunchConfiguration('vrep_ip')
+    vrep_timeout = LaunchConfiguration('vrep_timeout')
 
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -29,6 +30,10 @@ def generate_launch_description():
         DeclareLaunchArgument(
             'use_coppeliasim',
             default_value='True'
+        ),
+        DeclareLaunchArgument(
+             'vrep_timeout',
+              default_value='1000'
         ),
         Node(
             package='sas_robot_driver',
@@ -40,6 +45,7 @@ def generate_launch_description():
                 "robot_driver_client_names": ["ur_1"],
                 "use_real_robot": True,
                 "use_coppeliasim": use_coppeliasim,
+                "vrep_timeout": vrep_timeout,
                 "vrep_robot_joint_names": joint_names,
                 "vrep_ip": vrep_ip,
                 "vrep_port": 23000,
