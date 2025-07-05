@@ -9,7 +9,8 @@ services:
       sleep 10
       && ros2 launch sas_ur_control_template \
       simulation_example_cpp_launch.py \
-      vrep_ip:='host.docker.internal' "
+      vrep_ip:='host.docker.internal' \
+      vrep_timeout:=60000"
 
   coppeliasim:
     image: murilomarinho/coppeliasim:noble_470rev4
