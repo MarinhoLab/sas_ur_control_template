@@ -1,8 +1,8 @@
-# sas_ur_control_template
+# SAS UR Control Template
 
 This is a template control package for `sas_robot_driver_ur`. 
 
-## Docker image ![Docker Pulls](https://img.shields.io/docker/pulls/murilomarinho/sas_ur_control_template)
+## Docker image ![Docker Pulls](https://img.shields.io/docker/pulls/murilomarinho/sas)
 
 ### Simulation demonstrator
 
@@ -19,12 +19,6 @@ docker compose up
 > If running on a `arm64` Linux system host, remember to install
 > ```commandline
 > sudo apt-get install qemu-user-static
-> ```
-
-> [!NOTE]
-> Depending on your network settings, you might want to do in the host to allow the CoppelaSim port.
-> ```commandLine
-> sudo ufw allow 23000
 > ```
 
 ## From source (advanced)
