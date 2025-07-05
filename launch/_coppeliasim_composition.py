@@ -28,7 +28,7 @@ def generate_launch_description():
         ),
         DeclareLaunchArgument(
             'use_coppeliasim',
-            default_value=True
+            default_value='True'
         ),
         Node(
             package='sas_robot_driver',
