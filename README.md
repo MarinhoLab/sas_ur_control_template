@@ -1,19 +1,13 @@
 # SAS UR Control Template
 
-This is a template control package for `sas_robot_driver_ur`. 
+This is a control template for [Universal Robots](https://www.universal-robots.com) robotic manipulators.
 
-## Docker image ![Docker Pulls](https://img.shields.io/docker/pulls/murilomarinho/sas)
+This relies on [`sas_robot_driver_ur`](https://github.com/MarinhoLab/sas_robot_driver_ur) to communicate
+with the robot via [URCL](https://github.com/UniversalRobots/Universal_Robots_Client_Library).
+
+## Docker image
 
 ### Simulation demonstrator
-
-```commandline
-mkdir -p ~/sas_urct && cd ~/sas_urct
-curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/simulation_demo/compose.yml
-xhost +local:root
-docker compose up
-```
-
-### Troubleshooting
 
 > [!IMPORTANT]
 > If running on a `arm64` Linux system host, remember to install
@@ -21,10 +15,26 @@ docker compose up
 > sudo apt-get install qemu-user-static
 > ```
 
-## From source (advanced)
+```commandline
+mkdir -p ~/sas_urct/simulation_demo && cd ~/sas_urct/simulation_demo
+curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/simulation_demo/compose.yml
+xhost +local:root
+docker compose up
+```
 
-> [!IMPORTANT]
-> Using this package from source requires some understanding of ROS 2. 
+### Real robot
+
+> [!CAUTION]
+> For using the real robot, you **must** have the risk assessments in place. 
+> This guide is meant to be helpful but holds absolutely no liability whatsoever. More details are available in the software license.
+
+> [!WARNING]
+> This code will move the robot. Be sure that the workspace is free and safe for operation.
+> Be sure that the robot is in a joint configuration in which it will not hit itself or anything around it. 
+
+TODO
+
+## From source (advanced)
 
 ### 1. Pre-requisites
 
@@ -50,33 +60,23 @@ source install/setup.bash
 
 https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
 
-1. Open the scene `scenes/UR3e_480rev0.ttt` on CoppeliaSim and start the simulation by clicking the start button.
-2. `ros2 launch sas_ur_control_template dummy_move_in_coppeliasim_example_cpp_launch.py`
+1. Open the scene `scenes/UR3e_480rev0.ttt` on CoppeliaSim and start the simulation.
+2. `ros2 launch sas_ur_control_template simulation_example_cpp_launch.py`
 
 ## Working with the real robot
 
-> [!CAUTION]
-> For using the real robot, you **must** have the risk assessments in place. 
-> This guide is meant to be helpful but holds absolutely no liability whatsoever. More details are available in the software license.
+> [!IMPORTANT]
+> Be sure that the teaching pendant is in `Remove Control` mode.
 
-> [!WARNING]
-> This code will move the robot. Be sure that the workspace is free and safe for operation.
-> Be sure that the robot is in a joint configuration in which it will not hit itself or anything around it. 
+> [!TIP]
+> Use your robot's IP address in `ur1_ip`. Refer to `launch/_real_robot_launch.py`.
 
-1. Be sure that the teaching pendant is in `Remove Control` mode.  
-2. Split the terminator into four screens. Now, the order matters.
+Run
 
-| `a` | `b` |
-|-----|-----|
-| `c` | `d` |
+```commandline
+ros2 launch real_robot_move_example_py_launch.py ur1_ip:=192.170.10.22
+```
 
-3. In `a`, run the CoppeliaSim scene `scenes/UR3e_480rev0.ttt` and start the simulation.
-4. In `b`, run `ros2 launch sas_ur_control_template real_robot_launch.py`
-   - The emergency button must be held at all times.
-   - After some seconds of initialization, the robot will be active. 
-6. In `c`, run `ros2 launch sas_ur_control_template compose_with_coppeliasim_launch.py`. This will connect the CoppeliaSim scene with the ros2 code.
-7. In `d`, run `ros2 run sas_ur_control_template joint_interface_example.py`. The robot will move in a sine wave in joint space, with respect to its initial joint values.
-
-## Troubleshooting tips
+## See also
 
 https://github.com/UniversalRobots/Universal_Robots_ROS_Driver/issues/507
