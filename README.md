@@ -9,6 +9,8 @@ with the robot via [URCL](https://github.com/UniversalRobots/Universal_Robots_Cl
 
 ### Simulation demonstrator
 
+https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
+
 > [!IMPORTANT]
 > If running on a `arm64` Linux system host, remember to install
 > ```commandline
@@ -57,8 +59,6 @@ source install/setup.bash
 ```
 
 ### Working in simulation
-
-https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
 
 1. Open the scene `scenes/UR3e_480rev0.ttt` on CoppeliaSim and start the simulation.
 2. `ros2 launch sas_ur_control_template simulation_example_cpp_launch.py`
