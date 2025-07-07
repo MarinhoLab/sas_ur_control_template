@@ -34,7 +34,11 @@ docker compose up
 > This code will move the robot. Be sure that the workspace is free and safe for operation.
 > Be sure that the robot is in a joint configuration in which it will not hit itself or anything around it. 
 
-TODO
+```commandline
+mkdir -p ~/sas_urct/robot_demo && cd ~/sas_urct/robot_demo
+curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/robot_demo/compose.yml
+docker compose up
+```
 
 ## From source (advanced)
 
