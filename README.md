@@ -14,12 +14,6 @@ https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
 
 ![](./sas_urct_simulation.mp4)
 
-> [!IMPORTANT]
-> If running on a `arm64` Linux system host, remember to install
-> ```commandline
-> sudo apt-get install qemu-user-static
-> ```
-
 ```commandline
 mkdir -p ~/sas_urct/simulation_demo && cd ~/sas_urct/simulation_demo
 curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/simulation_demo/compose.yml
@@ -27,7 +21,23 @@ xhost +local:root
 docker compose up
 ```
 
+> [!IMPORTANT]
+> If running on a `arm64` Linux system host, remember to install
+> ```commandline
+> sudo apt-get install qemu-user-static
+> ```
+
 ### Real robot
+
+https://github.com/user-attachments/assets/62ac7ccd-d7c8-41f7-8af8-1b17919d90f2
+
+![](./sas_urct_realrobot.mp4)
+
+```commandline
+mkdir -p ~/sas_urct/robot_demo && cd ~/sas_urct/robot_demo
+curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/robot_demo/compose.yml
+docker compose up
+```
 
 > [!CAUTION]
 > For using the real robot, you **must** have the risk assessments in place. 
@@ -36,12 +46,6 @@ docker compose up
 > [!WARNING]
 > This code will move the robot. Be sure that the workspace is free and safe for operation.
 > Be sure that the robot is in a joint configuration in which it will not hit itself or anything around it. 
-
-```commandline
-mkdir -p ~/sas_urct/robot_demo && cd ~/sas_urct/robot_demo
-curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/robot_demo/compose.yml
-docker compose up
-```
 
 ## From source (advanced)
 
