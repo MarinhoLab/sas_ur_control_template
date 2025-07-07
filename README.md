@@ -12,7 +12,7 @@ with the robot via [URCL](https://github.com/UniversalRobots/Universal_Robots_Cl
 
 https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
 
-![alt](https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18 'title')
+![](../../docs/videos/sas_urct_simulation.mp4)
 
 > [!IMPORTANT]
 > If running on a `arm64` Linux system host, remember to install
