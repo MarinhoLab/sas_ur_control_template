@@ -1,8 +1,9 @@
 # SAS UR Control Template
 
-This is a control template for [Universal Robots](https://www.universal-robots.com) robotic manipulators.
+> [!TIP]
+> More information about the SmartArmStack is available in https://smartarmstack.github.io/.
 
-This relies on [`sas_robot_driver_ur`](https://github.com/MarinhoLab/sas_robot_driver_ur) to communicate
+This is a control template for [Universal Robots](https://www.universal-robots.com) robotic manipulators. It relies on [`sas_robot_driver_ur`](https://github.com/MarinhoLab/sas_robot_driver_ur) to communicate
 with the robot via [URCL](https://github.com/UniversalRobots/Universal_Robots_Client_Library).
 
 ## Docker image
@@ -36,7 +37,11 @@ docker compose up
 > This code will move the robot. Be sure that the workspace is free and safe for operation.
 > Be sure that the robot is in a joint configuration in which it will not hit itself or anything around it. 
 
-TODO
+```commandline
+mkdir -p ~/sas_urct/robot_demo && cd ~/sas_urct/robot_demo
+curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/robot_demo/compose.yml
+docker compose up
+```
 
 ## From source (advanced)
 

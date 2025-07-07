@@ -1,40 +1,27 @@
 services:
   sas_ur_control_template:
-    image: murilomarinho/sas_ur_control_template:latest
-    hostname: sas_ur_control_template_docker
-    privileged: true
+    build: https://github.com/MarinhoLab/sas_ur_control_template.git#main:.devel/sas_ur_control_template
     stop_signal: SIGINT
     stop_grace_period: 1m
+    network_mode: "host" # Reverse connection with UR robot
+    environment:
+      - ROS_DOMAIN_ID
     cap_add:
-      - SYS_NICE
+      - SYS_NICE # PREEMPT_RT
     ulimits:
-      rtprio: 99
-      rttime: -1 # corresponds to 'unlimited'
-    networks:
-      - ros2-net
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    #  memlock: 8428281856
+      rtprio: 99 # PREEMPT_RT
+      rttime: -1 # PREEMPT_RT
     command: /bin/bash -c "
       cd /root/sas_tutorial_workspace/src/sas_ur_control_template \
-       && cat /etc/bash_env \
+      && cat /etc/bash_env \
       && git pull \
       && cd /root/sas_tutorial_workspace \
+      && curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/scripts/fastrtps_profile.xml || exit 1 \
+      && cat fastrtps_profile.xml \
+      && export FASTRTPS_DEFAULT_PROFILES_FILE=/root/sas_tutorial_workspace/fastrtps_profile.xml \
       && colcon build \
       && source install/setup.bash \
       && cd /root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts/ \
       && ./countdown.sh 3\
       && ros2 launch sas_ur_control_template \
       real_robot_move_example_py_launch.py"
-
-  ros2_inspector:
-    image: murilomarinho/sas:latest
-    hostname: ros2_inspector
-    stdin_open: true # docker run -i
-    tty: true        # docker run -t
-    networks:
-     - ros2-net
-
-networks:
-  ros2-net:
-      driver: bridge
