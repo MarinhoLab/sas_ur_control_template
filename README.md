@@ -6,13 +6,15 @@
 This is a control template for [Universal Robots](https://www.universal-robots.com) robotic manipulators. It relies on [`sas_robot_driver_ur`](https://github.com/MarinhoLab/sas_robot_driver_ur) to communicate
 with the robot via [URCL](https://github.com/UniversalRobots/Universal_Robots_Client_Library).
 
-## Docker image
+## Docker
 
-### Simulation demonstrator
+### Simulation
 
 https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
 
 ![](./sas_urct_simulation.mp4)
+
+Run
 
 ```commandline
 mkdir -p ~/sas_urct/simulation_demo && cd ~/sas_urct/simulation_demo
@@ -21,7 +23,7 @@ xhost +local:root
 docker compose up
 ```
 
-> [!IMPORTANT]
+> [!NOTE]
 > If running on a `arm64` Linux system host, remember to install
 > ```commandline
 > sudo apt-get install qemu-user-static
@@ -32,6 +34,8 @@ docker compose up
 https://github.com/user-attachments/assets/62ac7ccd-d7c8-41f7-8af8-1b17919d90f2
 
 ![](./sas_urct_realrobot.mp4)
+
+Run
 
 ```commandline
 mkdir -p ~/sas_urct/robot_demo && cd ~/sas_urct/robot_demo
