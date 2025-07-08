@@ -34,6 +34,14 @@ docker compose up
 
 ### Real robot
 
+> [!CAUTION]
+> For using the real robot, you **must** have the risk assessments in place. 
+> This guide is meant to be helpful but holds absolutely no liability whatsoever. More details are available in the software license.
+
+> [!WARNING]
+> This code will move the robot. Be sure that the workspace is free and safe for operation.
+> Be sure that the robot is in a joint configuration in which it will not hit itself or anything around it. 
+
 https://github.com/user-attachments/assets/62ac7ccd-d7c8-41f7-8af8-1b17919d90f2
 
 ![](./sas_urct_realrobot.mp4)
@@ -47,14 +55,11 @@ curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/re
 
 docker compose up
 ```
+> [!IMPORTANT]
+> Be sure that the teaching pendant is in `Remove Control` mode.
 
-> [!CAUTION]
-> For using the real robot, you **must** have the risk assessments in place. 
-> This guide is meant to be helpful but holds absolutely no liability whatsoever. More details are available in the software license.
-
-> [!WARNING]
-> This code will move the robot. Be sure that the workspace is free and safe for operation.
-> Be sure that the robot is in a joint configuration in which it will not hit itself or anything around it. 
+> [!TIP]
+> Use your robot's IP address in `ur1_ip`. Refer to `launch/_real_robot_launch.py`.
 
 ## From source (advanced)
 
@@ -84,12 +89,6 @@ source install/setup.bash
 2. `ros2 launch sas_ur_control_template simulation_example_cpp_launch.py`
 
 ## Working with the real robot
-
-> [!IMPORTANT]
-> Be sure that the teaching pendant is in `Remove Control` mode.
-
-> [!TIP]
-> Use your robot's IP address in `ur1_ip`. Refer to `launch/_real_robot_launch.py`.
 
 Run
 
