@@ -1,7 +1,8 @@
 # SAS UR Control Template
 
 > [!TIP]
-> More information about the SmartArmStack is available in https://smartarmstack.github.io/.
+> Repository for this template: https://github.com/MarinhoLab/sas_ur_control_template
+> More information about SmartArmStack is available in https://smartarmstack.github.io/.
 
 This is a control template for [Universal Robots](https://www.universal-robots.com) robotic manipulators. It relies on [`sas_robot_driver_ur`](https://github.com/MarinhoLab/sas_robot_driver_ur) to communicate
 with the robot via [URCL](https://github.com/UniversalRobots/Universal_Robots_Client_Library).
@@ -17,8 +18,10 @@ https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
 Run
 
 ```commandline
-mkdir -p ~/sas_urct/simulation_demo && cd ~/sas_urct/simulation_demo
+mkdir -p ~/sas_tutorial_workspace/docker/sas_ur_control_template/simulation_demo
+cd ~/sas_tutorial_workspace/docker/sas_ur_control_template/simulation_demo
 curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/simulation_demo/compose.yml
+
 xhost +local:root
 docker compose up
 ```
@@ -38,8 +41,10 @@ https://github.com/user-attachments/assets/62ac7ccd-d7c8-41f7-8af8-1b17919d90f2
 Run
 
 ```commandline
-mkdir -p ~/sas_urct/robot_demo && cd ~/sas_urct/robot_demo
+mkdir -p ~/sas_tutorial_workspace/docker/sas_ur_control_template/robot_demo
+cd ~/sas_tutorial_workspace/docker/sas_ur_control_template/robot_demo
 curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/robot_demo/compose.yml
+
 docker compose up
 ```
 
