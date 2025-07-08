@@ -17,6 +17,7 @@ def generate_launch_description():
         "/UR3e/link/joint/link/joint/link/joint/link/joint",
         "/UR3e/link/joint/link/joint/link/joint/link/joint/link/joint",
     ]
+    robot_topic_name = "ur_1"
        
     use_coppeliasim = LaunchConfiguration('use_coppeliasim')
     vrep_ip = LaunchConfiguration('vrep_ip')
@@ -42,7 +43,7 @@ def generate_launch_description():
             emulate_tty=True,
             name='ur_composed',
             parameters=[{
-                "robot_driver_client_names": ["ur_1"],
+                "robot_driver_client_names": [robot_topic_name],
                 "use_real_robot": True,
                 "use_coppeliasim": use_coppeliasim,
                 "vrep_timeout": vrep_timeout,
