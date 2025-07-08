@@ -1,7 +1,7 @@
 # SAS UR Control Template
 
 > [!TIP]
-> Repository for this template: https://github.com/MarinhoLab/sas_ur_control_template
+> Repository for this template: https://github.com/MarinhoLab/sas_ur_control_template \
 > More information about SmartArmStack is available in https://smartarmstack.github.io/.
 
 This is a control template for [Universal Robots](https://www.universal-robots.com) robotic manipulators. It relies on [`sas_robot_driver_ur`](https://github.com/MarinhoLab/sas_robot_driver_ur) to communicate
