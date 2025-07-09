@@ -5,7 +5,7 @@ services:
     stop_grace_period: 1m
     network_mode: "host" # Reverse connection with UR robot
     volumes:
-      - repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
+      - sas-ur-control-template-repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
     environment:
       - ROS_DOMAIN_ID
     cap_add:
@@ -28,7 +28,7 @@ services:
       DISPLAY: $DISPLAY # x server related
     privileged: true # Needed for some gpu configurations.
     volumes:
-      - repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
+      - sas-ur-control-template-repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
       - /tmp/.X11-unix:/tmp/.X11-unix # x server related
       - ~/.Xauthority:/root/.Xauthority # x server related
     network_mode: "host" # x server related
@@ -37,4 +37,4 @@ services:
       && ./coppeliaSim.sh -s0 /root/sas_tutorial_workspace/src/sas_ur_control_template/scenes/UR3e_480rev0.ttt"
 
 volumes:
-  repo-data:
+  sas-ur-control-template-repo-data:
