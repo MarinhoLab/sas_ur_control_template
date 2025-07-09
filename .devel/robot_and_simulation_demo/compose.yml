@@ -21,6 +21,7 @@ services:
 
   coppeliasim:
     image: murilomarinho/coppeliasim:noble_470rev4
+    stop_signal: SIGINT
     platform: linux/amd64
     environment:
       DISPLAY: $DISPLAY # x server related
