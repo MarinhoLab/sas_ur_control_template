@@ -61,6 +61,22 @@ docker compose up
 > [!TIP]
 > Use your robot's IP address in `ur1_ip`. Refer to `launch/_real_robot_launch.py`.
 
+### Real robot and simulation
+
+> [!IMPORTANT]
+> Consider all information given for the simulation and real robot demos.
+
+Run
+
+```commandline
+mkdir -p ~/sas_tutorial_workspace/docker/sas_ur_control_template/robot_and_simulation_demo
+cd ~/sas_tutorial_workspace/docker/sas_ur_control_template/robot_and_simulation_demo
+curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/robot_and_simulation_demo/compose.yml
+
+xhost +local:root
+docker compose up
+```
+
 ## From source (advanced)
 
 ### 1. Pre-requisites
