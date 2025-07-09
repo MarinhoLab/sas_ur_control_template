@@ -15,7 +15,7 @@ def generate_launch_description():
     real_robot_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('sas_ur_control_template'), 'launch'),
-            '/_real_robot_launch.py'])
+            '/_robot_launch.py'])
     )
 
     return LaunchDescription([
