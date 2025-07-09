@@ -2,7 +2,7 @@ services:
   sas_ur_control_template:
     build: https://github.com/MarinhoLab/sas_ur_control_template.git#main:.devel/sas_ur_control_template
     volumes:
-      - repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
+      - sas-ur-control-template-repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
     extra_hosts:
       - "host.docker.internal:host-gateway"
     command: /bin/bash -c "
@@ -19,7 +19,7 @@ services:
       DISPLAY: $DISPLAY # x server related
     privileged: true # Needed for some gpu configurations.
     volumes:
-      - repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
+      - sas-ur-control-template-repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
       - /tmp/.X11-unix:/tmp/.X11-unix # x server related
       - ~/.Xauthority:/root/.Xauthority # x server related
     network_mode: "host" # x server related
@@ -30,4 +30,4 @@ services:
       /root/sas_tutorial_workspace/src/sas_ur_control_template/scenes/UR3e_480rev0.ttt"
 
 volumes:
-  repo-data:
+  sas-ur-control-template-repo-data:
