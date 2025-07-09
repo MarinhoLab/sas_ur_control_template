@@ -1,15 +1,23 @@
 services:
   sas_ur_control_template:
     build: https://github.com/MarinhoLab/sas_ur_control_template.git#main:.devel/sas_ur_control_template
-    volumes:
-      - repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+    stop_signal: SIGINT
+    stop_grace_period: 1m
+    network_mode: "host" # Reverse connection with UR robot
+    environment:
+      - ROS_DOMAIN_ID
+    cap_add:
+      - SYS_NICE # PREEMPT_RT
+    ulimits:
+      rtprio: 99 # PREEMPT_RT
+      rttime: -1 # PREEMPT_RT
     command: /bin/bash -c "
-      ros2 launch sas_ur_control_template \
-      simulation_example_cpp_launch.py \
+      cd /root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts
+      && chmod +x prepare_robot_demo.sh
+      && . ./prepare_robot_demo.sh
+      && ros2 launch sas_ur_control_template robot_and_simulation_example_py_launch.py \
       vrep_ip:='host.docker.internal' \
-      vrep_timeout:=10000"
+      vrep_timeout:=10000""
 
   coppeliasim:
     image: murilomarinho/coppeliasim:noble_470rev4
