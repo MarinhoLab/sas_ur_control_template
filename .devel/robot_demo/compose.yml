@@ -13,5 +13,6 @@ services:
       rttime: -1 # PREEMPT_RT
     command: /bin/bash -c "
       cd /root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts
-      && chmod +x run_real_robot.sh
-      && . ./run_real_robot.sh "
+      && chmod +x prepare_robot_demo.sh
+      && . ./prepare_robot_demo.sh
+      && ros2 launch sas_ur_control_template real_robot_move_example_py_launch.py"
