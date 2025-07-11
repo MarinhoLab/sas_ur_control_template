@@ -27,7 +27,7 @@ int main(int argc, char** argv)
     clock.init();
 
     // Initialize the RobotDriverClient
-    sas::RobotDriverClient rdi(node, "ur_composed");
+    sas::RobotDriverClient rdi(node, "ur1_sim");
 
     // Wait for RobotDriverClient to be enabled
     while(!rdi.is_enabled() && !kill_this_process)

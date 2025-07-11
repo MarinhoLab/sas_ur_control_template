@@ -46,7 +46,7 @@ def main(args=None):
         rclpy.init(args=args)
         rospy_node = Node('sas_robot_driver_ur_joint_space_example_node_py')
 
-        rospy_node.declare_parameter('robot_topic_name', 'ur_composed')
+        rospy_node.declare_parameter('robot_topic_name', 'ur1_sim')
         robot_topic_name = rospy_node.get_parameter('robot_topic_name').get_parameter_value().string_value
 
         rclcpp_init()
