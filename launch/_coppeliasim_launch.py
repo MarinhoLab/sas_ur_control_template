@@ -35,7 +35,7 @@ def generate_launch_description():
             executable='sas_robot_driver_coppeliasim_node',
             output='screen',
             emulate_tty=True,
-            name='ur1_sim',
+            name='ur_1_sim',
             parameters=[{
                 "timeout": coppeliasim_timeout,
                 "robot_joint_names": joint_names,
