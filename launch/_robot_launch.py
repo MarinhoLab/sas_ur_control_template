@@ -1,7 +1,3 @@
-"""
-Run this script in a different terminal window or tab. Be ready to close this, as this activates the real robot if the
-connection is successful.
-"""
 import os.path
 
 from launch import LaunchDescription
