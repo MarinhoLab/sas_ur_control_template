@@ -17,41 +17,30 @@ def generate_launch_description():
         "/UR3e/link/joint/link/joint/link/joint/link/joint",
         "/UR3e/link/joint/link/joint/link/joint/link/joint/link/joint",
     ]
-    robot_topic_name = "ur_1"
-       
-    use_coppeliasim = LaunchConfiguration('use_coppeliasim')
-    vrep_ip = LaunchConfiguration('vrep_ip')
-    vrep_timeout = LaunchConfiguration('vrep_timeout')
+
+    ip = LaunchConfiguration('ip')
+    timeout = LaunchConfiguration('timeout')
 
     return LaunchDescription([
         DeclareLaunchArgument(
-            'vrep_ip',
+            'ip',
             default_value='127.0.0.1'
         ),
         DeclareLaunchArgument(
-            'use_coppeliasim',
-            default_value='True'
-        ),
-        DeclareLaunchArgument(
-             'vrep_timeout',
+             'timeout',
               default_value='1000'
         ),
         Node(
-            package='sas_robot_driver',
-            executable='sas_robot_driver_ros_composer_node',
+            package='sas_robot_driver_coppeliasim',
+            executable='sas_robot_driver_coppeliasim_node',
             output='screen',
             emulate_tty=True,
-            name='ur_composed',
+            name='ur1_sim',
             parameters=[{
-                "robot_driver_client_names": [robot_topic_name],
-                "use_real_robot": True,
-                "use_coppeliasim": use_coppeliasim,
-                "vrep_timeout": vrep_timeout,
-                "vrep_robot_joint_names": joint_names,
-                "vrep_ip": vrep_ip,
-                "vrep_port": 23000,
-                "vrep_dynamically_enabled": True,
-                "override_joint_limits_with_robot_parameter_file": False,
+                "timeout": timeout,
+                "robot_joint_names": joint_names,
+                "ip": ip,
+                "port": 23000,
                 "thread_sampling_time_sec": 0.001
             }]
         )
