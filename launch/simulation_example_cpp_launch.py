@@ -20,7 +20,7 @@ def generate_launch_description():
     composed_with_coppeliasim_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('sas_ur_control_template'), 'launch'),
-            '/_coppeliasim_composition.py'])
+            '/_coppeliasim_launch.py'])
     )
 
     return LaunchDescription([
