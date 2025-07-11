@@ -18,16 +18,16 @@ def generate_launch_description():
         "/UR3e/link/joint/link/joint/link/joint/link/joint/link/joint",
     ]
 
-    ip = LaunchConfiguration('ip')
-    timeout = LaunchConfiguration('timeout')
+    coppeliasim_ip = LaunchConfiguration('coppeliasim_ip')
+    coppeliasim_timeout = LaunchConfiguration('coppeliasim_timeout')
 
     return LaunchDescription([
         DeclareLaunchArgument(
-            'ip',
+            'coppeliasim_ip',
             default_value='127.0.0.1'
         ),
         DeclareLaunchArgument(
-             'timeout',
+             'coppeliasim_timeout',
               default_value='1000'
         ),
         Node(
@@ -37,9 +37,9 @@ def generate_launch_description():
             emulate_tty=True,
             name='ur1_sim',
             parameters=[{
-                "timeout": timeout,
+                "timeout": coppeliasim_timeout,
                 "robot_joint_names": joint_names,
-                "ip": ip,
+                "ip": coppeliasim_ip,
                 "port": 23000,
                 "joint_limits_min": [-360.0, -360.0, -360.0, -360.0, -360.0, -720.0],  # The last joint has no limit
                 "joint_limits_max": [360.0, 360.0, 360.0, 360.0, 360.0, 720.0],  # The last joint has no limit
