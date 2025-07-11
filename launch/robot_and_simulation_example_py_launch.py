@@ -1,6 +1,3 @@
-"""This is a launch file that calls the two launch files and the example script to make the simulated robot
-move in CoppeliaSim. For more details, refer to the repository's README.md"""
-
 import os
 
 from ament_index_python.packages import get_package_share_directory

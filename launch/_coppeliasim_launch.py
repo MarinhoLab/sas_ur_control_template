@@ -1,7 +1,3 @@
-"""This launch file depends on the robot driver mentioned, `ur_1`, be active. In addition, the correct scene must
-be loaded in CoppeliaSim and the simulation must be started. If there are connection issues, restarting the simulation
-(not the entire program, just stopping and starting the simulation) might do the trick."""
-
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch_ros.actions import Node
