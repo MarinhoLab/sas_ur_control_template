@@ -18,7 +18,7 @@ services:
       && chmod +x prepare_robot_demo.sh
       && . ./prepare_robot_demo.sh
       && ros2 launch sas_ur_control_template robot_and_simulation_example_py_launch.py \
-      vrep_timeout:=10000"
+      coppeliasim_timeout:=10000"
 
   coppeliasim:
     image: murilomarinho/coppeliasim:noble_470rev4
