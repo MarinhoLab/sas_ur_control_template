@@ -7,30 +7,10 @@ services:
     network_mode: "host" 
     environment:
       - ROS_DOMAIN_ID
-      - FASTRTPS_DEFAULT_PROFILES_FILE="/root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts/fastrtps_profile.xml"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - FASTRTPS_DEFAULT_PROFILES_FILE=/root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts/fastrtps_profile.xml
     stdin_open: true
     tty: true
     command: /bin/bash 
-
-  coppeliasim:
-    image: murilomarinho/coppeliasim:latest
-    platform: linux/amd64
-    stop_signal: SIGINT
-    environment:
-      DISPLAY: $DISPLAY # x server related
-    privileged: true # Needed for some gpu configurations.
-    volumes:
-      - sas-ur-control-template-repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
-      - /tmp/.X11-unix:/tmp/.X11-unix # x server related
-      - ~/.Xauthority:/root/.Xauthority # x server related
-    network_mode: "host" # x server related
-    command: /bin/bash -c "
-      cd "$$COPPELIASIM_PATH"
-      && ./coppeliaSim.sh \
-      -s0 \
-      /root/sas_tutorial_workspace/src/sas_ur_control_template/scenes/UR3e_teleop_4100rev0.ttt"
 
 volumes:
   sas-ur-control-template-repo-data:
