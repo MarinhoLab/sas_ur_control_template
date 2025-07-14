@@ -14,7 +14,7 @@ def generate_launch_description():
             emulate_tty=True,
             name='sas_operator_side_receiver_udp_node',
             parameters=[{
-                "patient_side_ips": ["172.18.0.3"],
+                "patient_side_ips": ["192.168.1.67"],
                 "patient_side_ports": [2223],
                 "operator_side_ports": [2223]
             }]
