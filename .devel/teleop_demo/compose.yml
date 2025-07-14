@@ -5,6 +5,7 @@ services:
       - ../../../sas_operator_side_receiver/:/root/sas_tutorial_workspace/src/sas_operator_side_receiver/
       - ../../../sas_patient_side_manager/:/root/sas_tutorial_workspace/src/sas_patient_side_manager/
       - ../../../sas_robot_kinematics_constrained_multiarm/:/root/sas_tutorial_workspace/src/sas_robot_kinematics_constrained_multiarm/
+      - sas-ur-control-template-repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/ # CoppeliaSim be able to see the scene file
       - /tmp/.X11-unix:/tmp/.X11-unix # x server related
       - ~/.Xauthority:/root/.Xauthority # x server related
     privileged: true
@@ -17,4 +18,23 @@ services:
     tty: true
     command: /bin/bash
 
+  coppeliasim:
+    image: murilomarinho/coppeliasim:latest
+    platform: linux/amd64
+    stop_signal: SIGINT
+    environment:
+      DISPLAY: $DISPLAY # x server related
+    privileged: true # Needed for some gpu configurations.
+    volumes:
+      - sas-ur-control-template-repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
+      - /tmp/.X11-unix:/tmp/.X11-unix # x server related
+      - ~/.Xauthority:/root/.Xauthority # x server related
+    network_mode: "host" # x server related
+    command: /bin/bash -c "
+      cd "$$COPPELIASIM_PATH"
+      && ./coppeliaSim.sh \
+      -s0 \
+      /root/sas_tutorial_workspace/src/sas_ur_control_template/scenes/UR3e_teleop_4100rev0.ttt"
 
+volumes:
+  sas-ur-control-template-repo-data:
