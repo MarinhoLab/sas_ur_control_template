@@ -58,6 +58,15 @@ install(DIRECTORY
 
 ##END## LAUNCH FILES #####
 
+#### Robot config files ####
+
+install(DIRECTORY
+  robots
+  DESTINATION share/${PROJECT_NAME}/robots/
+)
+
+##END## Robot config files #####
+
 # According to https://github.com/SmartArmStack/sas_datalogger/blob/78ac681f9cb049c5b9715d215f163565f16b5cdc/CMakeLists.txt
 ##### PYTHON EXECUTABLES #####
 install(PROGRAMS
