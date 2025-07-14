@@ -62,7 +62,7 @@ install(DIRECTORY
 
 install(DIRECTORY
   robots
-  DESTINATION share/${PROJECT_NAME}/robots/
+  DESTINATION share/${PROJECT_NAME}/
 )
 
 ##END## Robot config files #####
