@@ -27,7 +27,7 @@ def generate_launch_description():
                         "alpha_secondary": 0.99,
                         "enable_initial_angle_limit": True,
                         "master_device_labels": ["m0_0"],
-                        "robot_driver_interface_node_prefixes": ["arm1"],
+                        "robot_driver_interface_node_prefixes": ["ur_1_sim"],
                         "robot_kinematics_provider_prefixes": ["arm1_kinematics"],
                         "vrep_port": 23000,
                         "vrep_ip": "127.0.0.1",
