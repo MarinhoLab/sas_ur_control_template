@@ -19,19 +19,19 @@ def generate_launch_description():
     sas_operator_side_receiver_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('sas_ur_control_template'), 'launch'),
-            '/_sas_operator_side_receiver_launch.py'])
+            '/teleop/_sas_operator_side_receiver_launch.py'])
     )
     
     sas_patient_side_manager_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('sas_ur_control_template'), 'launch'),
-            '/_sas_patient_side_manager_launch.py'])
+            '/teleop/_sas_patient_side_manager_launch.py'])
     )
     
     sas_robot_kinematics_constrained_multiarm_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('sas_ur_control_template'), 'launch'),
-            '/_sas_robot_kinematics_constrained_multiarm_launch.py'])
+            '/teleop/_sas_robot_kinematics_constrained_multiarm_launch.py'])
     )
 
     return LaunchDescription([
