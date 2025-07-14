@@ -13,7 +13,6 @@ def generate_launch_description():
             output='screen',
             emulate_tty=True,
             name='sas_operator_side_receiver_udp_node',
-            prefix=['xterm -e gdb -ex run --args'],
             parameters=[{
                 "patient_side_ips": ["192.168.1.67"],
                 "patient_side_ports": [2222],
