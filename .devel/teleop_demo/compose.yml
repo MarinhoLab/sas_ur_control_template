@@ -5,6 +5,9 @@ services:
       - sas-ur-control-template-repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
       - ../../../sas_operator_side_receiver/:/root/sas_tutorial_workspace/src/sas_operator_side_receiver/
     network_mode: "host" 
+    environment:
+      - ROS_DOMAIN_ID
+      - FASTRTPS_DEFAULT_PROFILES_FILE="/root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts/fastrtps_profile.xml"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     stdin_open: true
