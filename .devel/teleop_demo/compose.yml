@@ -2,15 +2,23 @@ services:
   sas_ur_control_template:
     build: https://github.com/MarinhoLab/sas_ur_control_template.git#main:.devel/sas_ur_control_template
     volumes:
-      - sas-ur-control-template-repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
       - ../../../sas_operator_side_receiver/:/root/sas_tutorial_workspace/src/sas_operator_side_receiver/
+      - /tmp/.X11-unix:/tmp/.X11-unix # x server related
+      - ~/.Xauthority:/root/.Xauthority # x server related
     network_mode: "host" 
     environment:
       - ROS_DOMAIN_ID
       - FASTRTPS_DEFAULT_PROFILES_FILE=/root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts/fastrtps_profile.xml
+      - DISPLAY=host.docker.internal:0 # x server related
+    network_mode: "host" # x server related
     stdin_open: true
     tty: true
-    command: /bin/bash 
+    command: /bin/bash -c "
+        cd /root/sas_tutorial_workspace/src
+        && colcon build
+        && source install/setup.bash
+        && sudo apt-get update
+        && sudo apt-get install gdb qtcreator -y
+    "
 
-volumes:
-  sas-ur-control-template-repo-data:
+
