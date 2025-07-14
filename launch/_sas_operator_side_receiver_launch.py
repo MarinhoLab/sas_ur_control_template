@@ -11,12 +11,14 @@ def generate_launch_description():
             package='sas_operator_side_receiver',
             executable='sas_operator_side_receiver_udp_node',
             output='screen',
-            emulate_tty=True
+            emulate_tty=True,
+            name='sas_operator_side_receiver_udp_node',
             parameters=[{
                 "patient_side_ips": ["192.168.1.120"],
                 "patient_side_ports": [2223],
                 "operator_side_ports": [2223]
-            }]
+            }],
+            arguments=['--ros-args', '--log-level', 'DEBUG']
         )
 
     ])
