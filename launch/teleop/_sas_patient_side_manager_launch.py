@@ -19,7 +19,7 @@ def generate_launch_description():
                 "thread_sampling_time_sec": 0.001,
 
                 "master_manipulator_label_list": ["m0_0"],
-                "vrep_camera_list": ["Camera"],
+                "vrep_camera_list": ["sas_teleop_camera"],
                 "vrep_x_list": ["x1"],
                 "vrep_xd_list": ["xd1"],
                 "robot_kinematics_interface_prefix_list": ["arm1_kinematics"],
