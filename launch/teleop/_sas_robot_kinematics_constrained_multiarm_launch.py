@@ -28,7 +28,9 @@ def generate_launch_description():
                         "robot_kinematics_provider_prefixes": ["arm1_kinematics"],
                         "vrep_port": 23000,
                         "vrep_ip": "127.0.0.1",
-                        "robot_parameter_file_paths": ["none"]
+                        "robot_parameter_file_paths": [
+                        [os.path.join(get_package_share_directory('sas_ur_control_template'), 'robots'),'/ur3e.json']
+                        ]
                     }]
         )
 
