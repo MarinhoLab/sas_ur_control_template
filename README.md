@@ -32,6 +32,13 @@ docker compose up
 > sudo apt-get install qemu-user-static
 > ```
 
+> [!NOTE]
+> For any example with the simulator, you might need to open port `23000` in the host. This is not always needed.
+> ```commandline
+> sudo ufw allow 23000
+> ```
+
+
 ### Real robot
 
 > [!CAUTION]
