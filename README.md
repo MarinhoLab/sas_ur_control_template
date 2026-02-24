@@ -27,7 +27,7 @@ docker compose up
 ```
 
 > [!NOTE]
-> If running on a `arm64` Linux system host, remember to install
+> If running on an `arm64` Linux system host, remember to install
 > ```commandline
 > sudo apt-get install qemu-user-static
 > ```
