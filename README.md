@@ -63,7 +63,7 @@ curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/re
 docker compose up
 ```
 > [!IMPORTANT]
-> Be sure that the teaching pendant is in `Remove Control` mode.
+> Be sure that the teaching pendant is in `Remote Control` mode.
 
 > [!TIP]
 > Use your robot's IP address in `ur1_ip`. Refer to `launch/_real_robot_launch.py`.
