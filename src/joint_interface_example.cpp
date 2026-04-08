@@ -1,5 +1,31 @@
+/**
+# Copyright (c) 2012-2026 Murilo Marques Marinho
+#
+#    This file is part of sas_ur_control_template.
+#
+#    sas_ur_control_template is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Lesser General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    sas_ur_control_template is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Lesser General Public License for more details.
+#
+#    You should have received a copy of the GNU Lesser General Public License
+#    along with sas_ur_control_template.  If not, see <https://www.gnu.org/licenses/>.
+#
+# #######################################################################################
+#
+#   Author: Murilo M. Marinho, email: murilomarinho@ieee.org
+#   Based on `joint_interface_example.cpp` from `sas_robot_driver_kuka`
+#
+# #######################################################################################
+**/
 #include <rclcpp/rclcpp.hpp>
 #include <sas_core/sas_clock.hpp>
+#include <sas_common/sas_common.hpp>
 #include <sas_robot_driver/sas_robot_driver_client.hpp>
 #include <dqrobotics/utils/DQ_Math.h>
 
@@ -20,7 +46,10 @@ int main(int argc, char** argv)
     }
 
     rclcpp::init(argc,argv,rclcpp::InitOptions(),rclcpp::SignalHandlerOptions::None);
-    auto node = std::make_shared<rclcpp::Node>("sas_ur_control_template_joint_interface_example");
+    auto node = std::make_shared<rclcpp::Node>("sas_robot_driver_ur_joint_space_example_node_cpp");
+
+    std::string robot_topic_name;
+    sas::get_ros_optional_parameter(node, "robot_topic_name", robot_topic_name, "ur_1_sim");
 
     // 1 ms clock
     sas::Clock clock{0.001};

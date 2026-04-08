@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-# Copyright (c) 2012-2025 Murilo Marques Marinho
+# Copyright (c) 2012-2026 Murilo Marques Marinho
 #
 #    This file is part of sas_ur_control_template.
 #
@@ -50,10 +50,10 @@ def main(args=None):
         robot_topic_name = rospy_node.get_parameter('robot_topic_name').get_parameter_value().string_value
 
         rclcpp_init()
-        roscpp_node = rclcpp_Node("sas_robot_driver_ur_joint_space_example_node_cpp")
+        roscpp_node = rclcpp_Node("sas_robot_driver_ur_joint_space_example_node_py_rclcpp")
        
-        # 10 ms clock
-        clock = Clock(0.01)
+        # 1 ms clock
+        clock = Clock(0.001)
         clock.init()
 
         # Initialize the RobotDriverClient
