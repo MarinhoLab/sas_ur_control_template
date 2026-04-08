@@ -8,10 +8,10 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(sas_robot_driver_ur REQUIRED)
-find_package(sas_robot_driver REQUIRED)
 find_package(sas_core REQUIRED)
 find_package(sas_common REQUIRED)
+find_package(sas_robot_driver REQUIRED)
+find_package(sas_robot_driver_ur REQUIRED)
 
 ############################
 # CPP Binary Block [BEGIN] #
@@ -30,6 +30,7 @@ ament_target_dependencies(${RCLCPP_LOCAL_BINARY_NAME}
     sas_core
     sas_common
     sas_robot_driver
+    sas_robot_driver_ur
     )
 
 target_link_libraries(${RCLCPP_LOCAL_BINARY_NAME}

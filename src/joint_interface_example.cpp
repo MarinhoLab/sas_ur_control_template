@@ -49,7 +49,7 @@ int main(int argc, char** argv)
     auto node = std::make_shared<rclcpp::Node>("sas_robot_driver_ur_joint_space_example_node_cpp");
 
     std::string robot_topic_name;
-    sas::get_ros_optional_parameter(node, "robot_topic_name", robot_topic_name, "ur_1_sim");
+    sas::get_ros_optional_parameter(node, "robot_topic_name", robot_topic_name, std::string("ur_1_sim"));
 
     // 1 ms clock
     sas::Clock clock{0.001};
