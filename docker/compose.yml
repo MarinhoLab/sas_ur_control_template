@@ -1,0 +1,9 @@
+services:
+  sas_ur_control_template:
+    build: .
+    volumes:
+      - ../../sas_ur_control_template:/root/sas_ur_control_template_devel/src/sas_ur_control_template
+    command: /bin/bash -c "
+      cd /root/sas_ur_control_template_devel/src/
+      && ls .
+      && colcon build"

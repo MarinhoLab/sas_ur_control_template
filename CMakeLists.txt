@@ -11,6 +11,7 @@ find_package(rclcpp REQUIRED)
 find_package(sas_robot_driver_ur REQUIRED)
 find_package(sas_robot_driver REQUIRED)
 find_package(sas_core REQUIRED)
+find_package(sas_common REQUIRED)
 
 ############################
 # CPP Binary Block [BEGIN] #
@@ -27,6 +28,7 @@ add_executable(${RCLCPP_LOCAL_BINARY_NAME}
 ament_target_dependencies(${RCLCPP_LOCAL_BINARY_NAME}
     rclcpp
     sas_core
+    sas_common
     sas_robot_driver
     )
 
