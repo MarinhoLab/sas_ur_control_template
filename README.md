@@ -83,3 +83,43 @@ curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/re
 xhost +local:root
 docker compose up
 ```
+
+# Configuration
+
+> [!CAUTION]
+> Changing network settings can increase [cybersecurity](https://ros2-tutorial.readthedocs.io/en/latest/cybersecurity/index.html) vulnerabilities.
+> This guide is meant to be helpful but holds absolutely no liability whatsoever. More details are available in the software license.
+
+## Universal Robots Software 5.25.0
+
+> [!TIP]
+> Teaching pendant must be in `Manual` mode.
+
+Necessary settings are shown below.
+
+### Enable Networking
+
+Set the network as needed in your application.
+
+- Hamburger -> Settings -> System -> Network -> Static Address
+
+### Enable Remote Control
+
+- Hamburger -> Settings -> System -> Remote Control -> Enable
+
+### Enable Services
+
+
+> [!NOTE]
+> Fewer permissions than these might be sufficient, if so please open an [issue](https://github.com/MarinhoLab/sas_ur_control_template/issues).
+
+- Hamburger -> Settings -> System -> Services -> Services
+
+|         |                                 |
+|---------|---------------------------------|
+| Enabled | Dashboard Server |
+| Enabled | Primary Client Interface |
+| Enabled | Secondary Client Interface |
+| Enabled | Real-Time Client Interface |
+| Enabled | Real-Time Data Exchange (RTDE) |
+| Enabled | Interpreter Mode Socket |
