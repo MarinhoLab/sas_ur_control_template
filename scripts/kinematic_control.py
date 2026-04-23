@@ -77,7 +77,7 @@ def main(args=None):
         robot_kinematics.set_lower_q_limit(joint_limits[0])
         robot_kinematics.set_upper_q_limit(joint_limits[1])
 
-        task_space_controller = DQ_PseudoinverseController(robot=robot_kinematics)
+        task_space_controller = DQ_PseudoinverseController(robot_kinematics)
         task_space_controller.set_gain(cfg["controller_gain"])
         task_space_controller.set_damping(cfg["damping"])
         task_space_controller.set_control_objective(ControlObjective.Pose)
