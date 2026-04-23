@@ -26,7 +26,6 @@ services:
       - ~/.Xauthority:/root/.Xauthority # x server related
     command: /bin/bash -c "
       ls "$$COPPELIA_SIM_CONTAINER_SCENE_PATH"
-      && sudo apt-get update && sudo apt-get upgrade -y
       && [ -f "$$COPPELIA_SIM_CONTAINER_SCENE_PATH/$$COPPELIA_SIM_SCENE_FILE" ]
       && cd "$$COPPELIASIM_PATH"
       && ./coppeliaSim.sh 
