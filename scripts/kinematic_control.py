@@ -116,7 +116,7 @@ def main(args=None):
 
             u = task_space_controller.compute_setpoint_control_signal(q, vec8(xd))
             q = q + u * sampling_time
-            x = task_space_controller.get_last_pose()
+            x = robot_kinematics.fkm(q)
 
             datalogger_client.log("q", q)
             datalogger_client.log("u", u)
