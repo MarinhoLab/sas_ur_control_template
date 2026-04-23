@@ -112,11 +112,18 @@ def main(args=None):
         while True:
             clock.update_and_sleep()
 
+            x = robot_kinematics.fkm(q)
             xd = oc_xd.get_pose()
+
+            # Even this simple example has unwinding, so we take care of that here
+            V1 = np.linalg.norm(vec8(x - xd))
+            V2 = np.linalg.norm(vec8(x + xd))
+            if V2 < V1:
+                xd = -xd
 
             u = task_space_controller.compute_setpoint_control_signal(q, vec8(xd))
             q = q + u * sampling_time
-            x = robot_kinematics.fkm(q)
+
 
             datalogger_client.log("q", q)
             datalogger_client.log("u", u)
