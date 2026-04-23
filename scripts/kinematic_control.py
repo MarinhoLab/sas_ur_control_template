@@ -33,7 +33,7 @@ def main(args=None):
         "controller_gain": 40.0,
         "damping": 0.01,
         "effector": DQ([1]),
-        "q_init": [0, -pi/2.0, 0, 0, 0, 0],
+        "q_init": [0, -pi/3.0, pi/3.0, 0, pi/3.0, 0],
         "sampling_time": 0.001,
     }
 
