@@ -114,7 +114,7 @@ def main(args=None):
 
             xd = oc_xd.get_pose()
 
-            u = task_space_controller.compute_setpoint_control_signal(q, xd)
+            u = task_space_controller.compute_setpoint_control_signal(q, vec8(xd))
             q = q + u * sampling_time
             x = task_space_controller.get_last_pose()
 
