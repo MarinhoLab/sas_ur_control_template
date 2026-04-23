@@ -1,0 +1,37 @@
+services:
+  sas_ur_control_template:
+    build: https://github.com/MarinhoLab/sas_ur_control_template.git#main:.devel/sas_ur_control_template
+    stop_signal: SIGINT
+    environment:
+      - ROS_DOMAIN_ID
+    volumes:
+      - sas-ur-control-template-repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
+    command: /bin/bash -c "
+      ros2 launch sas_ur_control_template \
+      simulation_v2_example_py_launch.py"
+
+  coppeliasim:
+    image: murilomarinho/coppeliasim:latest
+    stop_signal: SIGINT
+    platform: linux/amd64 # No current build for arm64
+    environment:
+      - DISPLAY
+      - ROS_DOMAIN_ID
+      - COPPELIA_SIM_SCENE_FILE=UR3e_4100rev0_sas.ttt
+      - COPPELIA_SIM_CONTAINER_SCENE_PATH=/root/sas_tutorial_workspace/src/sas_ur_control_template/scenes/
+    privileged: true # Needed for some gpu configurations.
+    volumes:
+      - sas-ur-control-template-repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
+      - /tmp/.X11-unix:/tmp/.X11-unix # x server related
+      - ~/.Xauthority:/root/.Xauthority # x server related
+    command: /bin/bash -c "
+      ls "$$COPPELIA_SIM_CONTAINER_SCENE_PATH"
+      && sudo apt-get update && sudo apt-get upgrade -y
+      && [ -f "$$COPPELIA_SIM_CONTAINER_SCENE_PATH/$$COPPELIA_SIM_SCENE_FILE" ]
+      && cd "$$COPPELIASIM_PATH"
+      && ./coppeliaSim.sh 
+      -s0 \
+      "$$COPPELIA_SIM_CONTAINER_SCENE_PATH/$$COPPELIA_SIM_SCENE_FILE""
+
+volumes:
+  sas-ur-control-template-repo-data:
