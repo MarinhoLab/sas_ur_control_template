@@ -4,11 +4,13 @@ services:
     stop_signal: SIGINT
     environment:
       - ROS_DOMAIN_ID
+      - XD_TOPIC_NAME=/sas_robot_driver_coppeliasim/object/xd
     volumes:
       - sas-ur-control-template-repo-data:/root/sas_tutorial_workspace/src/sas_ur_control_template/
     command: /bin/bash -c "
       ros2 launch sas_ur_control_template \
-      simulation_v2_kinematics_example_py_launch.py"
+      simulation_v2_kinematics_example_py_launch.py \
+      xd_topic_name:=$$XD_TOPIC_NAME"
 
   coppeliasim:
     image: murilomarinho/coppeliasim:latest
@@ -31,6 +33,21 @@ services:
       && ./coppeliaSim.sh 
       -s0 \
       "$$COPPELIA_SIM_CONTAINER_SCENE_PATH/$$COPPELIA_SIM_SCENE_FILE""
+
+  sas_datalogger:
+    image: murilomarinho/sas:jazzy
+    stop_signal: SIGINT
+    stop_grace_period: 120s
+    environment:
+      PYTHONUNBUFFERED: 1
+      ROS_DOMAIN_ID: $ROS_DOMAIN_ID
+    volumes:
+      - ./logs:/root/logs
+    command: /bin/bash -c "
+      sudo apt-get update &&
+      sudo apt-get upgrade -y &&
+      cd /root/logs &&
+      ros2 launch sas_datalogger sas_datalogger_launch.py"
 
 volumes:
   sas-ur-control-template-repo-data:
