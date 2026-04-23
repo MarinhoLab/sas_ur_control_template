@@ -30,8 +30,8 @@ from sas_datalogger import DataloggerClient
 def main(args=None):
 
     cfg = {
-        "controller_gain": 40.0,
-        "damping": 0.01,
+        "controller_gain": 4.0,
+        "damping": 0.1,
         "effector": DQ([1]),
         "q_init": [0, -pi/3.0, pi/3.0, 0, 0, 0],
         "sampling_time": 0.001,
