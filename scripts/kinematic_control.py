@@ -33,7 +33,7 @@ def main(args=None):
         "controller_gain": 40.0,
         "damping": 0.01,
         "effector": DQ([1]),
-        "q_init": [0, pi/3, 0, pi/3, 0, pi/3],
+        "q_init": [0, -pi/2.0, 0, 0, 0, 0],
         "sampling_time": 0.001,
     }
 
@@ -112,7 +112,7 @@ def main(args=None):
         while True:
             clock.update_and_sleep()
 
-            xd = oc_xd.get_pose() # Shutdown rclcpp
+            xd = oc_xd.get_pose()
 
             u = task_space_controller.compute_setpoint_control_signal(q, xd)
             q = q + u * sampling_time
