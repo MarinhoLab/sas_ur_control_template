@@ -25,12 +25,5 @@ def generate_launch_description():
                 "robot_topic_name": "sas_robot_driver_coppeliasim/UR3e",
                 "xd_topic_name": xd_topic_name
             }]
-        ),
-        Node(
-            output='screen',
-            emulate_tty=True,
-            package='sas_datalogger',
-            executable='sas_datalogger_node.py',
-            name='sas_datalogger'
-        ),
+        )
     ])
