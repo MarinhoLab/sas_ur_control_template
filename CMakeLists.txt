@@ -74,6 +74,7 @@ install(DIRECTORY
 ##### PYTHON EXECUTABLES #####
 install(PROGRAMS
   scripts/joint_interface_example.py
+  scripts/kinematic_control.py
   DESTINATION lib/${PROJECT_NAME}
 )
 ##END## PYTHON EXECUTABLES #####

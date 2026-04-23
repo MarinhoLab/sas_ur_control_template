@@ -20,7 +20,7 @@ def generate_launch_description():
             executable='kinematic_control.py',
             output='screen',
             emulate_tty=True,
-            name='sas_ur_control_template_joint_interface_example_py',
+            name='sas_ur_control_template_kinematics_example_py',
             parameters=[{
                 "robot_topic_name": "sas_robot_driver_coppeliasim/UR3e",
                 "xd_topic_name": xd_topic_name
