@@ -51,6 +51,9 @@ unset(RCLCPP_LOCAL_BINARY_NAME)
 # CPP Binary Block [END] #
 ##########################
 
+# Python library
+ament_python_install_package(${PROJECT_NAME})
+
 # According to https://github.com/SmartArmStack/sas_robot_driver/blob/ros2/CMakeLists.txt
 ##### LAUNCH FILES #####
 
