@@ -9,35 +9,7 @@ with the robot via [URCL](https://github.com/UniversalRobots/Universal_Robots_Cl
 
 ## Docker
 
-### Simulation
-
-https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
-
-![](./sas_urct_simulation.mp4)
-
-Run
-
-```commandline
-mkdir -p ~/sas_tutorial_workspace/docker/sas_ur_control_template/simulation_demo
-cd ~/sas_tutorial_workspace/docker/sas_ur_control_template/simulation_demo
-curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/simulation_demo/compose.yml
-
-xhost +local:root
-docker compose up
-```
-
-> [!NOTE]
-> If running on an `arm64` Linux system host, remember to install
-> ```commandline
-> sudo apt-get install qemu-user-static
-> ```
-
-> [!NOTE]
-> For any example with the simulator, you might need to open port `23000` in the host. This is not always needed.
-> ```commandline
-> sudo ufw allow 23000
-> ```
-
+Sample containers for real robot and simulated robot motion are available. Those can be tested without cloning this repository. For more advanced use, users are advised to clone and modify the sample cpp code in `src` or the sample Python code in `scripts`.
 
 ### Real robot
 
@@ -79,6 +51,23 @@ Run
 mkdir -p ~/sas_tutorial_workspace/docker/sas_ur_control_template/robot_and_simulation_demo
 cd ~/sas_tutorial_workspace/docker/sas_ur_control_template/robot_and_simulation_demo
 curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/robot_and_simulation_demo/compose.yml
+
+xhost +local:root
+docker compose up
+```
+
+### Simulation
+
+https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
+
+![](./sas_urct_simulation.mp4)
+
+Run
+
+```commandline
+mkdir -p ~/sas_tutorial_workspace/docker/sas_ur_control_template/simulation_demo
+cd ~/sas_tutorial_workspace/docker/sas_ur_control_template/simulation_demo
+curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/simulation_demo/compose.yml
 
 xhost +local:root
 docker compose up
