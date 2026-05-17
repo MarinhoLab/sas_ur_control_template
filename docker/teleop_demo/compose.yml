@@ -13,7 +13,7 @@ services:
     privileged: true
     environment:
       - ROS_DOMAIN_ID
-      - FASTRTPS_DEFAULT_PROFILES_FILE=/root/sas_tutorial_workspace/src/sas_ur_control_template/.devel/scripts/fastrtps_profile.xml
+      - FASTRTPS_DEFAULT_PROFILES_FILE=/root/sas_tutorial_workspace/src/sas_ur_control_template/docker/scripts/fastrtps_profile.xml
       - DISPLAY
     cap_add:
       - SYS_NICE # PREEMPT_RT
