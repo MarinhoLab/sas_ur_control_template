@@ -98,6 +98,7 @@ def main(args=None):
         # Make sure the initial values have been reflected in the robot and simulation.
         def joint_condition(a, b) -> bool:
             print(f"{np.linalg.norm(a - b)}")
+            print(f"a={a}, b={b}")
             return np.allclose(a, b, atol=1e-3)
 
         def x_condition(a, b) -> bool:
