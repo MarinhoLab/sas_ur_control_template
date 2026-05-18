@@ -44,8 +44,6 @@ services:
     volumes:
       - ./logs:/root/logs
     command: /bin/bash -c "
-      sudo apt-get update &&
-      sudo apt-get upgrade -y &&
       cd /root/logs &&
       ros2 launch sas_datalogger sas_datalogger_launch.py"
 

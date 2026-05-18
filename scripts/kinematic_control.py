@@ -97,6 +97,7 @@ def main(args=None):
 
         # Make sure the initial values have been reflected in the robot and simulation.
         def joint_condition(a, b) -> bool:
+            print(f"{np.linalg.norm(a - b)}")
             return np.allclose(a, b, atol=1e-3)
 
         def x_condition(a, b) -> bool:
@@ -107,6 +108,7 @@ def main(args=None):
             print(f"Waiting for initial state to be reflected {joint_condition(q_init, rdi.get_joint_positions())},{x_condition(x_init, oc_x.get_pose())}...")
             rclcpp_spin_some(roscpp_node)
             time.sleep(0.1)
+        print("Initialisation successful.")
 
         q = q_init
         while True:
