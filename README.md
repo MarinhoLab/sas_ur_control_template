@@ -21,6 +21,26 @@ Sample containers for real robot and simulated robot motion are available. Those
 > This code will move the robot. Be sure that the workspace is free and safe for operation.
 > Be sure that the robot is in a joint configuration in which it will not hit itself or anything around it. 
 
+> [!IMPORTANT]
+> Be sure that the teaching pendant is in `Remote Control` mode.
+
+> [!TIP]
+> Use your robot's IP address using the `ip` parameter in the launch file. Refer to `robot_connection_test/compose.yml`.
+
+#### Communication test
+
+Run
+
+```commandline
+mkdir -p ~/sas_tutorial_workspace/docker/sas_ur_control_template/robot_connection_test
+cd ~/sas_tutorial_workspace/docker/sas_ur_control_template/robot_connection_test
+curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/docker/robot_connection_test/compose.yml
+
+docker compose up
+```
+
+#### Moving the robot
+
 https://github.com/user-attachments/assets/62ac7ccd-d7c8-41f7-8af8-1b17919d90f2
 
 ![](./sas_urct_realrobot.mp4)
@@ -34,11 +54,6 @@ curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/re
 
 docker compose up
 ```
-> [!IMPORTANT]
-> Be sure that the teaching pendant is in `Remote Control` mode.
-
-> [!TIP]
-> Use your robot's IP address in `ur1_ip`. Refer to `launch/_real_robot_launch.py`.
 
 ### Joint control simulation
 
