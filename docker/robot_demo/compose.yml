@@ -1,5 +1,6 @@
 services:
   sas_ur_control_template:
+    container_name: sas_ur_control_template_robot_demo
     build: https://github.com/MarinhoLab/sas_ur_control_template.git#main:docker/sas_ur_control_template
     stop_signal: SIGINT
     stop_grace_period: 1m
