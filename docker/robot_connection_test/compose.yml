@@ -1,0 +1,18 @@
+services:
+  sas_ur_control_template:
+    container_name: sas_ur_control_template_robot_connection_test
+    image: murilomarinho/sas:jazzy
+    stop_signal: SIGINT
+    stop_grace_period: 1m
+    network_mode: "host" # Reverse connection with UR robot
+    environment:
+      - ROS_DOMAIN_ID
+    cap_add:
+      - SYS_NICE # PREEMPT_RT
+    ulimits:
+      rtprio: 99 # PREEMPT_RT
+      rttime: -1 # PREEMPT_RT
+    command: /bin/bash -c "
+      wget https://raw.githubusercontent.com/mmmarinho/ROS2_Tutorial/refs/heads/main/docs/source/docker/fastrtps_profile.xml
+      && export FASTRTPS_DEFAULT_PROFILES_FILE=$(pwd)/fastrtps_profile.xml
+      && ros2 launch sas_robot_driver_ur robot_launch.py ip:='192.168.0.5'"
