@@ -40,22 +40,6 @@ docker compose up
 > [!TIP]
 > Use your robot's IP address in `ur1_ip`. Refer to `launch/_real_robot_launch.py`.
 
-### Real robot and simulation
-
-> [!IMPORTANT]
-> Consider all information given for the simulation and real robot demos.
-
-Run
-
-```commandline
-mkdir -p ~/sas_tutorial_workspace/docker/sas_ur_control_template/robot_and_simulation_demo
-cd ~/sas_tutorial_workspace/docker/sas_ur_control_template/robot_and_simulation_demo
-curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/robot_and_simulation_demo/compose.yml
-
-xhost +local:root
-docker compose up
-```
-
 ### Simulation
 
 https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
@@ -67,7 +51,7 @@ Run
 ```commandline
 mkdir -p ~/sas_tutorial_workspace/docker/sas_ur_control_template/simulation_demo
 cd ~/sas_tutorial_workspace/docker/sas_ur_control_template/simulation_demo
-curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/simulation_demo/compose.yml
+curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/docker/simulation_demo_v2/compose.yml
 
 xhost +local:root
 docker compose up
@@ -102,13 +86,13 @@ Set the network as needed in your application.
 > [!NOTE]
 > Fewer permissions than these might be sufficient, if so please open an [issue](https://github.com/MarinhoLab/sas_ur_control_template/issues).
 
-- Hamburger -> Settings -> System -> Services -> Services
+- Hamburger → Settings → System → Services → Services
 
-|         |                                 |
-|---------|---------------------------------|
-| Enabled | Dashboard Server |
-| Enabled | Primary Client Interface |
-| Enabled | Secondary Client Interface |
-| Enabled | Real-Time Client Interface |
+|         |                                |
+|---------|--------------------------------|
+| Enabled | Dashboard Server               |
+| Enabled | Primary Client Interface       |
+| Enabled | Secondary Client Interface     |
+| Enabled | Real-Time Client Interface     |
 | Enabled | Real-Time Data Exchange (RTDE) |
-| Enabled | Interpreter Mode Socket |
+| Enabled | Interpreter Mode Socket        |
