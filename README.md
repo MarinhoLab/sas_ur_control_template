@@ -30,7 +30,7 @@ Run
 ```commandline
 mkdir -p ~/sas_tutorial_workspace/docker/sas_ur_control_template/robot_demo
 cd ~/sas_tutorial_workspace/docker/sas_ur_control_template/robot_demo
-curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/.devel/robot_demo/compose.yml
+curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/docker/robot_demo/compose.yml
 
 docker compose up
 ```
