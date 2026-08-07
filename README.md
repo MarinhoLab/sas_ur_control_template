@@ -87,11 +87,11 @@ Necessary settings are shown below.
 
 Set the network as needed in your application.
 
-- Hamburger -> Settings -> System -> Network -> Static Address
+- Hamburger → Settings → System → Network → Static Address
 
 ### Enable Remote Control
 
-- Hamburger -> Settings -> System -> Remote Control -> Enable
+- Hamburger → Settings → System → Remote Control → Enable
 
 ### Enable Services
 
