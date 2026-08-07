@@ -40,7 +40,7 @@ docker compose up
 > [!TIP]
 > Use your robot's IP address in `ur1_ip`. Refer to `launch/_real_robot_launch.py`.
 
-### Simulation
+### Joint control simulation
 
 https://github.com/user-attachments/assets/bfee1148-bfe3-4425-80da-04fcd65d2b18
 
@@ -52,6 +52,19 @@ Run
 mkdir -p ~/sas_tutorial_workspace/docker/sas_ur_control_template/simulation_demo
 cd ~/sas_tutorial_workspace/docker/sas_ur_control_template/simulation_demo
 curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/docker/simulation_demo_v2/compose.yml
+
+xhost +local:root
+docker compose up
+```
+
+### Kinematics simulation
+
+The desired pose can be controlled via the `xd` dummy on the CoppeliaSim simulation.
+
+```commandline
+mkdir -p ~/sas_tutorial_workspace/docker/sas_ur_control_template/simulation_demo
+cd ~/sas_tutorial_workspace/docker/sas_ur_control_template/simulation_demo
+curl -OL https://raw.githubusercontent.com/MarinhoLab/sas_ur_control_template/refs/heads/main/docker/simulation_demo_v2_kinematic/compose.yml
 
 xhost +local:root
 docker compose up
