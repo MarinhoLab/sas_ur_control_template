@@ -12,7 +12,10 @@ def generate_launch_description():
     real_robot_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('sas_robot_driver_ur'), 'launch'),
-            '/robot_launch.py'])
+            '/robot_launch.py']),
+            launch_arguments = [
+                ("ip", "192.168.0.5"),
+            ]
     )
 
     return LaunchDescription([
