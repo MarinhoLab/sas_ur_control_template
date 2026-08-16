@@ -1,9 +1,0 @@
-services:
-  sas_ur_control_template:
-    build:
-      context: ..
-      dockerfile: docker/Dockerfile
-    command: /bin/bash -c "
-      cd /root/sas_ur_control_template_devel/src/
-      && ls .
-      && colcon build"
