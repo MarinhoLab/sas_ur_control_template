@@ -1,0 +1,17 @@
+services:
+
+  gazebo:
+    extends:
+      file: compose.yml
+      service: gazebo
+    environment:
+      PYTHONUNBUFFERED: 1
+      ROS_DOMAIN_ID: $ROS_DOMAIN_ID
+
+  teleoperation:
+    extends:
+      file: ../teleoperation/compose.yml
+      service: teleoperation
+    environment:
+      PYTHONUNBUFFERED: 1
+      ROS_DOMAIN_ID: $ROS_DOMAIN_ID
