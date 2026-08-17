@@ -1,4 +1,5 @@
 import os
+import sys
 from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
@@ -18,7 +19,7 @@ def generate_launch_description():
             name='sas_robot_kinematics_constrained_multiarm',
             parameters=[{
                         "thread_sampling_time_sec": 0.002,
-                        "n": 40.0,
+                        "n": 100.0,
                         "n_d": 6.0,
                         "damping": 0.01,
                         "damping_secondary": 0.0000001,
@@ -26,13 +27,12 @@ def generate_launch_description():
                         "alpha": 0.99999,
                         "alpha_secondary": 0.99,
                         "enable_initial_angle_limit": True,
+                        "initial_angle_limit_deg": 0.1,
                         "master_device_labels": ["m0_0"],
-                        "robot_driver_interface_node_prefixes": ["ur_1"],
+                        "robot_driver_interface_node_prefixes": ["ur3e"],
                         "robot_kinematics_provider_prefixes": ["arm1_kinematics"],
-                        "vrep_port": 23000,
-                        "vrep_ip": "127.0.0.1",
                         "robot_parameter_file_paths": [
-                        [os.path.join(get_package_share_directory('sas_ur_control_template'), 'robots'),'/ur3e.json']
+                        [os.path.join(get_package_share_directory('sas_robot_driver_ur'), 'robots'),'/ur3e.json']
                         ]
                     }]
         )
