@@ -1,14 +1,13 @@
 services:
   gazebo:
     container_name: sas_kuka_control_template_gazebo
-    build: https://raw.githubusercontent.com/MarinhoLab/sas_robot_driver_gazebo/refs/heads/jazzy/docker/Dockerfile
+    build:
+      context: ../../
+      dockerfile: docker/Dockerfile.Gazebo
     stop_signal: SIGINT
     environment:
       - DISPLAY
       - ROS_DOMAIN_ID
-      - WORLD_NAME=r820_world
-      - ROBOT_NAME=r820
-      - ROBOT_TOPIC_NAME=kuka_1_sim
     privileged: true # Needed for some gpu configurations.
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix # x server related
@@ -16,17 +15,6 @@ services:
     command: /bin/bash -c "
       export GZ_SIM_RESOURCE_PATH=$$GZ_SIM_RESOURCE_PATH:$$(ros2 pkg prefix sas_robot_driver_gazebo)/sdf/
       && cd $$(ros2 pkg prefix sas_robot_driver_gazebo --share)/sdf
-      && apt-get install -y tree && tree . 
-      && (gz sim "$$WORLD_NAME".sdf &)
-      && (ros2 launch sas_robot_driver_gazebo robot_driver_server_launch.py \
-      joint_states_topic:="/world/$$WORLD_NAME/model/$$ROBOT_NAME/model/$${ROBOT_NAME}_position_controller/model/$$ROBOT_NAME/joint_state" \
-      joint_names:='['joint1','joint2','joint3','joint4','joint5','joint6','joint7']' \
-      robot_name:="$$ROBOT_TOPIC_NAME"
-      &)
-      && (ros2 launch sas_robot_driver_gazebo server_launch.py \
-      autostart:=true \
-      set_pose_service_name:=/world/"$$WORLD_NAME"/set_pose \
-      get_pose_topic_name:=/world/"$$WORLD_NAME"/pose/info \
-      entity_names:='['frame_x','frame_xd', 'base', 'frame_base']' \
-      control_service_name:=/world/"$$WORLD_NAME"/control \
-      )"
+      && (ros2 launch sas_ur_control_template ur3e_robot_driver_launch.py &)
+      && (ros2 launch sas_ur_control_template server_launch.py &)
+      && gz sim ur3e_world.sdf"
