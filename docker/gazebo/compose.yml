@@ -1,6 +1,6 @@
 services:
   gazebo:
-    container_name: sas_kuka_control_template_gazebo
+    container_name: sas_ur_control_template_gazebo
     build:
       context: ../../
       dockerfile: docker/Dockerfile.Gazebo

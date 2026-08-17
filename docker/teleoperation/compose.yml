@@ -1,5 +1,6 @@
 services:
-  sas_ur_control_template:
+  teleoperation:
+    container_name: sas_ur_control_template_teleoperation
     build:
       context: ../../
       dockerfile: docker/Dockerfile
@@ -13,11 +14,6 @@ services:
       - ROS_DOMAIN_ID
       - FASTRTPS_DEFAULT_PROFILES_FILE=/root/sas_ur_control_template_devel/src/sas_ur_control_template/scripts/fastrtps_profile.xml
       - DISPLAY
-    cap_add:
-      - SYS_NICE # PREEMPT_RT
-    ulimits:
-      rtprio: 99 # PREEMPT_RT
-      rttime: -1 # PREEMPT_RT
     network_mode: "host" # x server related
     stdin_open: true
     tty: true
