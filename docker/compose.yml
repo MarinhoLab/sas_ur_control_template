@@ -3,4 +3,3 @@ services:
     build:
       context: ..
       dockerfile: docker/Dockerfile
-    entrypoint: ["/bin/bash", "/root/sas_ur_control_template_ci/src/sas_ur_control_template/docker/test_ci.sh"]
