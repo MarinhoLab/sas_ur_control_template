@@ -2,7 +2,7 @@ services:
   sas_ur_control_template:
     build:
       context: ../../..
-      dockerfile: docker/coppeliasim/sas_ur_control_template/Dockerfile
+      dockerfile: docker/sas_ur_control_template/Dockerfile
     stop_signal: SIGINT
     environment:
       - ROS_DOMAIN_ID
