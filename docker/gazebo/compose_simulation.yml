@@ -1,0 +1,45 @@
+services:
+  sas_ur_control_template:
+    container_name: sas_ur_control_template_simulation
+    build:
+      context: ../../
+      dockerfile: docker/gazebo/sas_ur_control_template/Dockerfile
+    stop_signal: SIGINT
+    environment:
+      - ROS_DOMAIN_ID
+    command: /bin/bash -c "
+      source /root/sas_tutorial_workspace/install/setup.bash
+      && cd /root/sas_tutorial_workspace/src/sas_ur_control_template
+      && python3 docker/gazebo/ur3e_simulation_example_py_launch.py \
+      robot_topic_name:=ur3e_sim"
+
+  gazebo:
+    container_name: sas_ur_control_template_gazebo
+    build: https://raw.githubusercontent.com/MarinhoLab/sas_robot_driver_gazebo/refs/heads/jazzy/docker/Dockerfile
+    stop_signal: SIGINT
+    environment:
+      - DISPLAY
+      - ROS_DOMAIN_ID
+      - WORLD_NAME=${WORLD_NAME}
+      - ROBOT_NAME=${ROBOT_NAME}
+      - ROBOT_TOPIC_NAME=${ROBOT_TOPIC_NAME}
+    privileged: true # Needed for some gpu configurations.
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix # x server related
+      - ~/.Xauthority:/root/.Xauthority # x server related
+    command: /bin/bash -c "
+      export GZ_SIM_RESOURCE_PATH=$$GZ_SIM_RESOURCE_PATH:$$(ros2 pkg prefix sas_robot_driver_gazebo)/sdf/
+      && cd $$(ros2 pkg prefix sas_robot_driver_gazebo --share)/sdf
+      && (gz sim "$$WORLD_NAME".sdf &)
+      && (ros2 launch sas_robot_driver_gazebo robot_driver_server_launch.py \
+      joint_states_topic:="/world/$$WORLD_NAME/model/$$ROBOT_NAME/model/$${ROBOT_NAME}_position_controller/model/$$ROBOT_NAME/joint_state" \
+      joint_names:='['shoulder_pan_joint','shoulder_lift_joint','elbow_joint','wrist_1_joint','wrist_2_joint','wrist_3_joint']' \
+      robot_name:="$$ROBOT_TOPIC_NAME"
+      &)
+      && (ros2 launch sas_robot_driver_gazebo server_launch.py \
+      autostart:=true \
+      set_pose_service_name:=/world/"$$WORLD_NAME"/set_pose \
+      get_pose_topic_name:=/world/"$$WORLD_NAME"/pose/info \
+      entity_names:='['base', 'tool0']' \
+      control_service_name:=/world/"$$WORLD_NAME"/control \
+      )"
