@@ -1,6 +1,8 @@
 services:
   sas_ur_control_template:
-    build: .
+    build:
+      context: ../..
+      dockerfile: docker/teleop_demo/sas_ur_control_template/Dockerfile
     stop_signal: SIGINT
     stop_grace_period: 1m
     volumes:
@@ -13,7 +15,7 @@ services:
     privileged: true
     environment:
       - ROS_DOMAIN_ID
-      - FASTRTPS_DEFAULT_PROFILES_FILE=/root/sas_tutorial_workspace/src/sas_ur_control_template/docker/scripts/fastrtps_profile.xml
+      - FASTRTPS_DEFAULT_PROFILES_FILE=/root/sas_tutorial_workspace/src/sas_ur_control_template/docker/teleop_demo/scripts/fastrtps_profile.xml
       - DISPLAY
     cap_add:
       - SYS_NICE # PREEMPT_RT
