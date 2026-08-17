@@ -2,8 +2,8 @@ services:
   sas_ur_control_template:
     container_name: sas_ur_control_template_simulation
     build:
-      context: ../../
-      dockerfile: docker/gazebo/sas_ur_control_template/Dockerfile
+      context: ../..
+      dockerfile: docker/sas_ur_control_template/Dockerfile
     stop_signal: SIGINT
     environment:
       - ROS_DOMAIN_ID

@@ -3,7 +3,7 @@ services:
     container_name: sas_ur_control_template_robot_demo
     build:
       context: ../..
-      dockerfile: docker/robot_demo/sas_ur_control_template/Dockerfile
+      dockerfile: docker/sas_ur_control_template/Dockerfile
     stop_signal: SIGINT
     stop_grace_period: 1m
     network_mode: "host" # Reverse connection with UR robot
@@ -15,7 +15,7 @@ services:
       rtprio: 99 # PREEMPT_RT
       rttime: -1 # PREEMPT_RT
     command: /bin/bash -c "
-      cd /root/sas_tutorial_workspace/src/sas_ur_control_template/docker/robot_demo/scripts
+      cd /root/sas_tutorial_workspace/src/sas_ur_control_template/docker/scripts
       && chmod +x prepare_robot_demo.sh
       && . ./prepare_robot_demo.sh
       && ros2 launch sas_ur_control_template robot_example_py_launch.py"
