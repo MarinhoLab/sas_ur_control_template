@@ -14,6 +14,7 @@ services:
       - ~/.Xauthority:/root/.Xauthority # x server related
     command: /bin/bash -c "
       export GZ_SIM_RESOURCE_PATH=$$GZ_SIM_RESOURCE_PATH:$$(ros2 pkg prefix sas_robot_driver_gazebo)/sdf/
+      && ros2 run sas_robot_driver_gazebo setup_vendor.sh ur
       && cd $$(ros2 pkg prefix sas_robot_driver_gazebo --share)/sdf
       && (ros2 launch sas_ur_control_template ur3e_robot_driver_launch.py &)
       && (ros2 launch sas_ur_control_template server_launch.py &)
