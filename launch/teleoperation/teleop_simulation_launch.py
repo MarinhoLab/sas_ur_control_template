@@ -20,12 +20,6 @@ def generate_launch_description():
 
         ]
     )
-
-    #sas_operator_side_receiver_launch = IncludeLaunchDescription(
-    #    PythonLaunchDescriptionSource([os.path.join(
-    #        get_package_share_directory('sas_r820_ur3e'), 'launch'),
-    #        '/teleoperation/_sas_operator_side_receiver_launch.py'])
-    #)
     
     sas_patient_side_manager_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
@@ -41,7 +35,6 @@ def generate_launch_description():
 
     return LaunchDescription([
         ur3e_compose_launch,
-        #sas_operator_side_receiver_launch,
         sas_patient_side_manager_launch,
         sas_robot_kinematics_constrained_multiarm_launch
     ])
