@@ -8,6 +8,7 @@ services:
     environment:
       - DISPLAY
       - ROS_DOMAIN_ID
+      - GAZEBO_ROBOT_TOPIC_NAME
     privileged: true # Needed for some gpu configurations.
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix # x server related

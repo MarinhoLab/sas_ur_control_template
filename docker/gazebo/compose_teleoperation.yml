@@ -7,6 +7,7 @@ services:
     environment:
       PYTHONUNBUFFERED: 1
       ROS_DOMAIN_ID: $ROS_DOMAIN_ID
+      GAZEBO_ROBOT_TOPIC_NAME: "ur3e"
 
   teleoperation:
     extends:
