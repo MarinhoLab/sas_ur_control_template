@@ -64,15 +64,6 @@ install(DIRECTORY
 
 ##END## LAUNCH FILES #####
 
-#### Robot config files ####
-
-install(DIRECTORY
-  robots
-  DESTINATION share/${PROJECT_NAME}/
-)
-
-##END## Robot config files #####
-
 #########################
 # Scripts Block [BEGIN] #
 # https://ros2-tutorial.readthedocs.io/en/latest/
