@@ -13,6 +13,13 @@ find_package(sas_common REQUIRED)
 find_package(sas_robot_driver REQUIRED)
 find_package(sas_robot_driver_ur REQUIRED)
 
+##### Config files #####
+install(DIRECTORY
+  config
+  DESTINATION share/${PROJECT_NAME}/
+)
+##END## Config files #####
+
 ############################
 # CPP Binary Block [BEGIN] #
 # vvvvvvvvvvvvvvvvvvvvvvvv #

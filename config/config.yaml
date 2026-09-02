@@ -1,0 +1,126 @@
+# Parameters for the sas_ur_control_template nodes.
+#
+# Each top-level block is keyed by the ROS node name and is loaded by the
+# corresponding launch file via its `config_file` argument.
+#
+# The `ur_1` block configures the `sas_robot_driver_ur_node` started by
+# `sas_robot_driver_ur/robot_launch.py` (see that package for the full
+# parameter list). Note that the driver launch file starts the node named
+# `ur3e` by default; pass `name:=ur_1` (or change the key here) so the
+# parameters below are picked up.
+#
+# The `sas_robot_driver_coppeliasim` block configures the
+# `sas_robot_driver_coppeliasim_node` started by
+# `sas_robot_driver_coppeliasim/robot_launch.py`.
+#
+# Some parameters (e.g. the teleoperation `CONTROL_PC_IP`, `PATIENT_SIDE_PORT`
+# and `OPERATOR_SIDE_PORT`) are environment-dependent and therefore still
+# provided from the environment by their launch files.
+
+# sas_robot_driver_coppeliasim_node
+sas_robot_driver_coppeliasim:
+  ros__parameters:
+    ip: '127.0.0.1'
+    port: 23000
+    timeout: 1000
+    robot_joint_names: ["shoulder_pan_joint", "shoulder_lift_joint", "elbow_joint", "wrist_1_joint", "wrist_2_joint", "wrist_3_joint"]
+    joint_limits_min: [-360.0, -360.0, -360.0, -360.0, -360.0, -720.0]  # The last joint has no limit
+    joint_limits_max: [360.0, 360.0, 360.0, 360.0, 360.0, 720.0]  # The last joint has no limit
+    thread_sampling_time_sec: 0.002  # Robot thread is at 500 Hz
+
+# sas_robot_driver_ur_node
+ur_1:
+  ros__parameters:
+    ip: '192.168.0.5'
+    script_file: '/opt/ros/jazzy/share/sas_robot_driver_ur/external_control.urscript'
+    output_recipe: '/opt/ros/jazzy/share/sas_robot_driver_ur/rtde_output_recipe.txt'
+    input_recipe: '/opt/ros/jazzy/share/sas_robot_driver_ur/rtde_input_recipe.txt'
+    calibration_checksum: 'calib_12788084448423163542'
+    joint_limits_min: [-360.0, -360.0, -360.0, -360.0, -360.0, -720.0]  # The last joint has no limit
+    joint_limits_max: [360.0, 360.0, 360.0, 360.0, 360.0, 720.0]  # The last joint has no limit
+    thread_sampling_time_sec: 0.002  # Robot thread is at 500 Hz
+    turn_robot_off_on_connect: false
+    turn_robot_off_on_disconnect: false
+
+# joint_interface_example_cpp (robot_example_cpp_launch.py)
+sas_ur_control_template_joint_interface_example:
+  ros__parameters:
+    robot_topic_name: "ur_1"
+
+# joint_interface_example.py (robot_example_py_launch.py, robot_and_simulation_example_py_launch.py)
+sas_ur_control_template_joint_interface_example_py:
+  ros__parameters:
+    robot_topic_name: "ur_1"
+
+# joint_interface_example.py (coppeliasim/simulation_v2_example_py_launch.py)
+sas_ur_control_template_coppeliasim_joint_interface_example_py:
+  ros__parameters:
+    robot_topic_name: "sas_robot_driver_coppeliasim/UR3e"
+
+# kinematic_control.py (coppeliasim/simulation_v2_kinematics_example_py_launch.py)
+sas_ur_control_template_kinematics_example_py:
+  ros__parameters:
+    robot_topic_name: "sas_robot_driver_coppeliasim/UR3e"
+    xd_topic_name: "/sas_robot_driver_coppeliasim/object/xd"
+
+# sas_patient_side_manager_node (teleoperation/_sas_patient_side_manager_launch.py)
+sas_patient_side_manager_node:
+  ros__parameters:
+    thread_sampling_time_sec: 0.001
+    master_manipulator_label_list: ["m0_0"]
+    object_client_camera_list: ["frame_camera"]
+    object_client_tag_x_list: ["frame_x"]
+    object_client_tag_xd_list: ["frame_xd"]
+    robot_kinematics_interface_prefix_list: ["arm1_kinematics"]
+    robot_gripper_interface_prefix_list: ["robot1/gripper"]
+    gripper_invert_signal_list: [True]
+    use_interpolator_list: [True]
+    interpolator_speed_max_list: [50.]
+    interpolator_speed_min_list: [10.]
+    interpolator_speed_decay_seconds_list: [10.]
+    force_feedback_type_list: ["ExternalMapped"]
+
+# sas_robot_kinematics_constrained_multiarm_node (teleoperation/_sas_robot_kinematics_constrained_multiarm_launch.py)
+sas_robot_kinematics_constrained_multiarm:
+  ros__parameters:
+    thread_sampling_time_sec: 0.002
+    n: 100.0
+    n_d: 6.0
+    damping: 0.01
+    damping_secondary: 0.0000001
+    damping_secondary_labels: ["2_8"]
+    alpha: 0.99999
+    alpha_secondary: 0.99
+    enable_initial_angle_limit: True
+    initial_angle_limit_deg: 0.1
+    master_device_labels: ["m0_0"]
+    robot_driver_interface_node_prefixes: ["ur3e"]
+    robot_kinematics_provider_prefixes: ["arm1_kinematics"]
+    robot_parameter_file_paths: [["/opt/ros/jazzy/share/sas_robot_driver_ur/robots/ur3e.json"]]
+
+# --- Gazebo simulation (launch/gazebo/) ---
+
+# sas_robot_driver_ros_gazebo.py bridge (gazebo/ur3e_robot_driver_launch.py)
+# Node name is set to `ur3e_1` by that launch file (see `name` launch arg).
+ur3e_1:
+  ros__parameters:
+    joint_names: ["shoulder_pan_joint", "shoulder_lift_joint", "elbow_joint", "wrist_1_joint", "wrist_2_joint", "wrist_3_joint"]
+    joint_positions_topic_prefix: "/model/ur3e/joint/"
+    joint_states_topic: "/world/ur3e_world/model/ur3e/model/ur3e_position_controller/model/ur3e/joint_state"
+    robot_name: "ur3e"
+    thread_sampling_time_sec: 0.002  # Robot thread is at 500 Hz
+
+# sas_object_server_gazebo_node (gazebo/server_launch.py -> object_server_launch.py)
+sas_object_server_gazebo_node:
+  ros__parameters:
+    set_pose_service_name: "/world/ur3e_world/set_pose"
+    get_pose_topic_name: "/world/ur3e_world/absolute_pose/info"
+    entity_names: ["frame_x", "frame_xd", "frame_camera"]
+    thread_sampling_time_sec: 0.01
+
+# sas_simulator_server_gazebo_node (gazebo/server_launch.py -> simulator_server_launch.py)
+sas_simulator_server_gazebo_node:
+  ros__parameters:
+    service_name: "/world/ur3e_world/control"
+    thread_sampling_time_sec: 0.01
+    autostart: true
