@@ -1,7 +1,7 @@
 services:
   robot:
     container_name: sas_ur_control_template_robot
-    image: murilomarinho/sas:jazzy
+    image: ghcr.io/marinholab/sas-full:jazzy
     stop_signal: SIGINT
     stop_grace_period: 1m
     network_mode: "host" # Reverse connection with UR robot

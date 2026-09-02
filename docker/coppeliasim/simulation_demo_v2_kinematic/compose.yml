@@ -37,7 +37,7 @@ services:
       "$$COPPELIA_SIM_CONTAINER_SCENE_PATH/$$COPPELIA_SIM_SCENE_FILE""
 
   sas_datalogger:
-    image: murilomarinho/sas:jazzy
+    image: ghcr.io/marinholab/sas-full:jazzy
     stop_signal: SIGINT
     stop_grace_period: 120s
     environment:
