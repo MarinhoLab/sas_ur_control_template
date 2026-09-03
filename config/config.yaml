@@ -3,6 +3,15 @@
 # Each top-level block is keyed by the ROS node name and is loaded by the
 # corresponding launch file via its `config_file` argument.
 #
+# Robot naming convention (used for the node name, the config key, the driver
+# provider/topic prefix and the `robot_topic_name` of the client nodes):
+#   ur_1     - the real robot
+#   ur_sim_1 - the simulated robot (Gazebo)
+#
+# Note: the CoppeliaSim example nodes reference `sas_robot_driver_coppeliasim/UR3e`
+# as their `robot_topic_name`; that is the CoppeliaSim scene's internal robot
+# model name and is intentionally left unchanged.
+#
 # The `ur_1` block configures the `sas_robot_driver_ur_node` started by
 # `sas_robot_driver_ur/robot_launch.py` (see that package for the full
 # parameter list). Note that the driver launch file starts the node named
@@ -94,7 +103,7 @@ sas_robot_kinematics_constrained_multiarm:
     enable_initial_angle_limit: True
     initial_angle_limit_deg: 0.1
     master_device_labels: ["m0_0"]
-    robot_driver_interface_node_prefixes: ["ur3e"]
+    robot_driver_interface_node_prefixes: ["ur_sim_1"]
     robot_kinematics_provider_prefixes: ["arm1_kinematics"]
     robot_parameter_file_paths: [["/opt/ros/jazzy/share/sas_robot_driver_ur/robots/ur3e.json"]]
 
@@ -105,13 +114,18 @@ sas_robot_kinematics_constrained_multiarm:
 # `simulator_server_launch.py`), which `docker/gazebo/compose.yml` invokes
 # directly with `config_file` pointing at this file.
 
-# sas_robot_driver_ros_gazebo.py bridge (robot_driver_server_launch.py, name:=ur3e_1)
-ur3e_1:
+# sas_robot_driver_ros_gazebo.py bridge (robot_driver_server_launch.py, name:=ur_sim_1)
+#
+# `robot_name` is the driver provider/topic prefix, so the ROS topics are
+# `/ur_sim_1/<...>`. The `joint_positions_topic_prefix` / `joint_states_topic`
+# below point at the Gazebo SDF model (still named `ur3e` in the world) and are
+# independent of the ROS prefix.
+ur_sim_1:
   ros__parameters:
     joint_names: ["shoulder_pan_joint", "shoulder_lift_joint", "elbow_joint", "wrist_1_joint", "wrist_2_joint", "wrist_3_joint"]
     joint_positions_topic_prefix: "/model/ur3e/joint/"
     joint_states_topic: "/world/ur3e_world/model/ur3e/model/ur3e_position_controller/model/ur3e/joint_state"
-    robot_name: "ur3e"
+    robot_name: "ur_sim_1"
     thread_sampling_time_sec: 0.002  # Robot thread is at 500 Hz
 
 # sas_object_server_gazebo_node (object_server_launch.py)
