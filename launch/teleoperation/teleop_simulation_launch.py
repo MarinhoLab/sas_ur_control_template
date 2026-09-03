@@ -12,11 +12,13 @@ def generate_launch_description():
 
     ur3e_compose_launch = GroupAction(
         actions=[
-
-            SetRemap(src='/ur3e_sim/get/joint_states', dst='/ur3e/get/joint_states'),
-            SetRemap(src='/ur3e_sim/set/target_joint_positions', dst='/ur3e/set/target_joint_positions'),
-            SetRemap(src='/ur3e_sim/get/joint_positions_min', dst='/ur3e/get/joint_positions_min'),
-            SetRemap(src='/ur3e_sim/get/joint_positions_max', dst='/ur3e/get/joint_positions_max'),
+            # Bridge the teleop master robot's Gazebo topics (source prefix
+            # `ur3e_sim`, that model's own name) to the sim robot's driver
+            # interface prefix `ur_sim_1`, which the multiarm controller reads.
+            SetRemap(src='/ur3e_sim/get/joint_states', dst='/ur_sim_1/get/joint_states'),
+            SetRemap(src='/ur3e_sim/set/target_joint_positions', dst='/ur_sim_1/set/target_joint_positions'),
+            SetRemap(src='/ur3e_sim/get/joint_positions_min', dst='/ur_sim_1/get/joint_positions_min'),
+            SetRemap(src='/ur3e_sim/get/joint_positions_max', dst='/ur_sim_1/get/joint_positions_max'),
 
         ]
     )
