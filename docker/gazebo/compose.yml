@@ -8,7 +8,6 @@ services:
     environment:
       - DISPLAY
       - ROS_DOMAIN_ID
-      - GAZEBO_ROBOT_TOPIC_NAME
     privileged: true # Needed for some gpu configurations.
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix # x server related
@@ -17,6 +16,7 @@ services:
       export GZ_SIM_RESOURCE_PATH=$$GZ_SIM_RESOURCE_PATH:$$(ros2 pkg prefix sas_robot_driver_gazebo)/sdf/
       && ros2 run sas_robot_driver_gazebo setup_vendor.sh ur
       && cd $$(ros2 pkg prefix sas_robot_driver_gazebo --share)/sdf
-      && (ros2 launch sas_ur_control_template ur3e_robot_driver_launch.py &)
-      && (ros2 launch sas_ur_control_template server_launch.py &)
+      && (ros2 launch sas_robot_driver_gazebo robot_driver_server_launch.py name:=ur3e_1 config_file:=$$(ros2 pkg prefix sas_ur_control_template --share)/config/config.yaml &)
+      && (ros2 launch sas_robot_driver_gazebo object_server_launch.py config_file:=$$(ros2 pkg prefix sas_ur_control_template --share)/config/config.yaml &)
+      && (ros2 launch sas_robot_driver_gazebo simulator_server_launch.py config_file:=$$(ros2 pkg prefix sas_ur_control_template --share)/config/config.yaml &)
       && gz sim ur3e_world.sdf"
