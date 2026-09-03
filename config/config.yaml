@@ -98,10 +98,14 @@ sas_robot_kinematics_constrained_multiarm:
     robot_kinematics_provider_prefixes: ["arm1_kinematics"]
     robot_parameter_file_paths: [["/opt/ros/jazzy/share/sas_robot_driver_ur/robots/ur3e.json"]]
 
-# --- Gazebo simulation (launch/gazebo/) ---
+# --- Gazebo simulation (launched via the sas_robot_driver_gazebo package) ---
+#
+# These blocks are loaded by the `sas_robot_driver_gazebo` launch files
+# (`robot_driver_server_launch.py`, `object_server_launch.py`,
+# `simulator_server_launch.py`), which `docker/gazebo/compose.yml` invokes
+# directly with `config_file` pointing at this file.
 
-# sas_robot_driver_ros_gazebo.py bridge (gazebo/ur3e_robot_driver_launch.py)
-# Node name is set to `ur3e_1` by that launch file (see `name` launch arg).
+# sas_robot_driver_ros_gazebo.py bridge (robot_driver_server_launch.py, name:=ur3e_1)
 ur3e_1:
   ros__parameters:
     joint_names: ["shoulder_pan_joint", "shoulder_lift_joint", "elbow_joint", "wrist_1_joint", "wrist_2_joint", "wrist_3_joint"]
@@ -110,7 +114,7 @@ ur3e_1:
     robot_name: "ur3e"
     thread_sampling_time_sec: 0.002  # Robot thread is at 500 Hz
 
-# sas_object_server_gazebo_node (gazebo/server_launch.py -> object_server_launch.py)
+# sas_object_server_gazebo_node (object_server_launch.py)
 sas_object_server_gazebo_node:
   ros__parameters:
     set_pose_service_name: "/world/ur3e_world/set_pose"
@@ -118,7 +122,7 @@ sas_object_server_gazebo_node:
     entity_names: ["frame_x", "frame_xd", "frame_camera"]
     thread_sampling_time_sec: 0.01
 
-# sas_simulator_server_gazebo_node (gazebo/server_launch.py -> simulator_server_launch.py)
+# sas_simulator_server_gazebo_node (simulator_server_launch.py)
 sas_simulator_server_gazebo_node:
   ros__parameters:
     service_name: "/world/ur3e_world/control"
