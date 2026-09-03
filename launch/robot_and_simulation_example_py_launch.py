@@ -3,8 +3,8 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, GroupAction
-from launch_ros.actions import SetRemap
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch_ros.actions import Node
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 
@@ -19,8 +19,9 @@ def generate_launch_description():
         launch_arguments=[('config_file', config_file)]
     )
 
-    # The target_joint_positions topic of the simulator is remapped to match the same as the robot
-    # so that it is controlled via the same signals.
+    # The simulated robot's target_joint_positions topic is relayed to the
+    # real robot's topic so that the example (which drives `ur_1`) controls the
+    # simulator via the same signals.
     coppeliasim_robot_driver_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('sas_robot_driver_coppeliasim'), 'launch'),
@@ -37,10 +38,11 @@ def generate_launch_description():
             default_value=os.path.join(get_package_share_directory('sas_ur_control_template'), 'config', 'config.yaml')
         ),
         robot_example_py_launch,
-        GroupAction(
-            actions=[
-                SetRemap(src='/sas_robot_driver_coppeliasim/set/target_joint_positions', dst='/ur_1/set/target_joint_positions'),
-                coppeliasim_robot_driver_launch,
-            ]
-        )
+        coppeliasim_robot_driver_launch,
+        Node(
+            package='topic_tools',
+            executable='relay_node',
+            name='ur_1_relay',
+            parameters=[config_file]
+        ),
     ])

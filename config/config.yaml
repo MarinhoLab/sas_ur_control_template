@@ -72,6 +72,16 @@ sas_ur_control_template_kinematics_example_py:
     robot_topic_name: "sas_robot_driver_coppeliasim/UR3e"
     xd_topic_name: "/sas_robot_driver_coppeliasim/object/xd"
 
+# topic_tools relay (robot_and_simulation_example_py_launch.py)
+# Forwards the real robot's set/target_joint_positions to the CoppeliaSim
+# simulator's set/target_joint_positions, so the example (which drives `ur_1`)
+# controls the simulation via the same signals. This replaces the previous
+# inline SetRemap in the launch file.
+ur_1_relay:
+  ros__parameters:
+    input_topic: "/ur_1/set/target_joint_positions"
+    output_topic: "/sas_robot_driver_coppeliasim/set/target_joint_positions"
+
 # sas_patient_side_manager_node (teleoperation/_sas_patient_side_manager_launch.py)
 sas_patient_side_manager_node:
   ros__parameters:
