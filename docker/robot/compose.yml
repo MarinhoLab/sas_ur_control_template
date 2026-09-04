@@ -13,7 +13,4 @@ services:
       rtprio: 99 # PREEMPT_RT
       rttime: -1 # PREEMPT_RT
     command: /bin/bash -c "
-      cd /root/sas_ur_control_template_devel/docker/scripts
-      && chmod +x prepare_robot_demo.sh
-      && . ./prepare_robot_demo.sh
-      && ros2 launch sas_robot_driver_ur robot_launch.py"
+      ros2 launch sas_robot_driver_ur robot_launch.py"

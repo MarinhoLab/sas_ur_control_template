@@ -46,7 +46,7 @@ def main(args=None):
         rclpy.init(args=args)
         rospy_node = Node('sas_robot_driver_ur_joint_space_example_node_py')
 
-        rospy_node.declare_parameter('robot_topic_name', 'ur_1_sim')
+        rospy_node.declare_parameter('robot_topic_name', 'ur3e')
         robot_topic_name = rospy_node.get_parameter('robot_topic_name').get_parameter_value().string_value
 
         rclcpp_init()
@@ -72,11 +72,11 @@ def main(args=None):
         print(f"joint positions = {joint_positions}")
 
         # For some iterations. Note that this can be stopped with CTRL+C.
-        for i in range(0, 5000):
+        for i in range(0, 30000):
             clock.update_and_sleep()
 
             # Move the joints
-            target_joint_positions = joint_positions + deg2rad([10.0 * sin(i / (50.0 * pi))] * 6)
+            target_joint_positions = joint_positions + deg2rad([3.0 * sin(i / (500.0 * pi))] * 6)
             # print(target_joint_positions)
             rdi.send_target_joint_positions(target_joint_positions)
 
