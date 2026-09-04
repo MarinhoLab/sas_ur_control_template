@@ -3,6 +3,4 @@ services:
     build:
       context: ..
       dockerfile: docker/Dockerfile
-      
-    command: /bin/bash -c "
-        ros2 run sas_ur_control_template kinematic_control_basic.py"
+
