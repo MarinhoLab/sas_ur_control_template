@@ -30,7 +30,7 @@ from sas_datalogger import DataloggerClient
 def main(args=None):
 
     cfg = {
-        "controller_gain": 40.,
+        "controller_gain": 1.,
         "damping": 0.1,
         "effector": DQ([1]),
         "sampling_time": 0.001,
@@ -73,23 +73,45 @@ def main(args=None):
         sampling_time = 0.001
 
         # H =
+        # [ 1 0 0 -0.01]
+        # [ 0 1 0 0    ]
+        # [ 0 0 1 0    ]
+        # [ 0 0 0 1    ]
+
+        # H =
+        # [ 1 0 0 0    ]
+        # [ 0 1 0 -0.01]
+        # [ 0 0 1 0    ]
+        # [ 0 0 0 1    ]
+
+        # H =
         # [ 1 0 0 0    ]
         # [ 0 1 0 0    ]
         # [ 0 0 1 -0.01]
         # [ 0 0 0 1    ]
+
+        y_prime = -(j_ + i_).normalize()
+        z_prime = k_
+        x_prime = cross(y_prime, z_prime)
+
         targets = [
-            (1.0 + 0.5 * E_ * 0.03 * k_),
-            (1.0 + 0.5 * E_ *  0.03 * i_),
-            (1.0 + 0.5 * E_ * -0.03 * k_),
-            (1.0 + 0.5 * E_ * -0.03 * i_),
+            (1.0 + 0.5 * E_ * (  0.05 * z_prime)),
+            (1.0 + 0.5 * E_ * (  0.35 * y_prime)),
+            (1.0 + 0.5 * E_ * ( -0.10 * z_prime)),
+            (1.0 + 0.5 * E_ * (  0.10 * z_prime)),
+            (1.0 + 0.5 * E_ * ( -0.35 * y_prime)),
+            (1.0 + 0.5 * E_ * ( -0.05 * z_prime)),
+            (1.0 + 0.5 * E_ * ( -0.23 * y_prime)),
+            (1.0 + 0.5 * E_ * (  0.23 * y_prime)),
         ]
 
         q = q_init
+        xd = robot_kinematics.fkm(q)
         for target in targets:
-            x = robot_kinematics.fkm(q)
-            xd = x * target
+            xd = target * xd
 
-            for _ in range(2000):
+            for _ in range(10000):
+                x = robot_kinematics.fkm(q)
                 clock.update_and_sleep()
 
                 # Even this simple example has unwinding, so we take care of that here
