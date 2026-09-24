@@ -79,7 +79,7 @@ int main(int argc, char** argv)
         clock.update_and_sleep();
 
         // Move the joints
-        auto target_joint_positions = joint_positions + VectorXd::Ones(joint_positions.size())*deg2rad(10.0 * sin(i / (50.0 * pi)));
+        auto target_joint_positions = joint_positions + Eigen::VectorXd::Ones(joint_positions.size())*deg2rad(10.0 * sin(i / (50.0 * pi)));
         // print(target_joint_positions)
         rdi.send_target_joint_positions(target_joint_positions);
 
