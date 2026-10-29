@@ -88,7 +88,6 @@ def main(args=None):
 
         y_prime = -(j_ + i_).normalize()
         z_prime = k_
-        x_prime = cross(y_prime, z_prime)
 
         targets = [
             (1.0 + 0.5 * E_ * (  0.05 * z_prime)),
