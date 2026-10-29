@@ -127,7 +127,7 @@ def main(args=None):
             datalogger_client.log("q", q)
             datalogger_client.log("u", u)
             datalogger_client.log("xd", vec8(xd))
-            datalogger_client.log("x", vec8(x))
+            datalogger_client.log("x", vec8(x))  # pyright: ignore[reportArgumentType]
 
             rdi.send_target_joint_positions(q)
             oc_x.send_pose(x)
