@@ -10,22 +10,20 @@ You should have received a copy of the GNU General Public License along with thi
 see <https://www.gnu.org/licenses/>.
 """
 import time
-
-import numpy as np
-
-from dqrobotics import *
-from dqrobotics.robot_control import DQ_PseudoinverseController, ControlObjective
 from math import pi
 
+import numpy as np
+import rclpy
+from dqrobotics import *
+from dqrobotics.robot_control import ControlObjective, DQ_PseudoinverseController
+from rclpy.node import Node
 from sas_ur_control_template.kinematics import get_kinematics
 
-import rclpy
-from rclpy.node import Node
-
-from sas_common import rclcpp_init, rclcpp_Node, rclcpp_spin_some, rclcpp_shutdown, ObjectClient
-from sas_robot_driver import RobotDriverClient
+from sas_common import ObjectClient, rclcpp_init, rclcpp_Node, rclcpp_shutdown, rclcpp_spin_some
 from sas_core import Clock
 from sas_datalogger import DataloggerClient
+from sas_robot_driver import RobotDriverClient
+
 
 def main(args=None):
 

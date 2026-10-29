@@ -25,20 +25,16 @@
 # #######################################################################################
 """
 import time
+from math import pi, sin
 
 import rclpy
-from rclpy.node import Node
-
-from math import sin, pi
-
-import numpy
 from dqrobotics import *  # Despite what PyCharm might say, this is very much necessary or DQs will not be recognized
 from dqrobotics.utils.DQ_Math import deg2rad
+from rclpy.node import Node
 
-from sas_common import rclcpp_init, rclcpp_Node, rclcpp_spin_some, rclcpp_shutdown
-from sas_robot_driver import RobotDriverClient
-
+from sas_common import rclcpp_init, rclcpp_Node, rclcpp_shutdown, rclcpp_spin_some
 from sas_core import Clock, Statistics
+from sas_robot_driver import RobotDriverClient
 
 
 def main(args=None):
@@ -51,7 +47,7 @@ def main(args=None):
 
         rclcpp_init()
         roscpp_node = rclcpp_Node("sas_robot_driver_ur_joint_space_example_node_py_rclcpp")
-       
+
         # 1 ms clock
         clock = Clock(0.001)
         clock.init()

@@ -1,11 +1,10 @@
 import os
 
 from ament_index_python.packages import get_package_share_directory
-
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, GroupAction
-from launch_ros.actions import SetRemap
+from launch.actions import GroupAction, IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch_ros.actions import SetRemap
 
 
 def generate_launch_description():
@@ -22,13 +21,13 @@ def generate_launch_description():
 
         ]
     )
-    
+
     sas_patient_side_manager_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('sas_ur_control_template'), 'launch'),
             '/teleoperation/_sas_patient_side_manager_launch.py'])
     )
-    
+
     sas_robot_kinematics_constrained_multiarm_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('sas_ur_control_template'), 'launch'),

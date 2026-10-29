@@ -1,7 +1,8 @@
 import os
-from ament_index_python.packages import get_package_share_directory
 
+from ament_index_python.packages import get_package_share_directory
 from dqrobotics.interfaces.json11 import DQ_JsonReader
+
 
 def get_kinematics():
     json_reader = DQ_JsonReader()
