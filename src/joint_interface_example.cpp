@@ -31,7 +31,7 @@
 
 using namespace DQ_robotics;
 
-#include<signal.h>
+#include <signal.h>
 static std::atomic_bool kill_this_process(false);
 void sig_int_handler(int)
 {
@@ -40,12 +40,12 @@ void sig_int_handler(int)
 
 int main(int argc, char** argv)
 {
-    if(signal(SIGINT, sig_int_handler) == SIG_ERR)
+    if (signal(SIGINT, sig_int_handler) == SIG_ERR)
     {
         throw std::runtime_error("::Error setting the signal int handler.");
     }
 
-    rclcpp::init(argc,argv,rclcpp::InitOptions(),rclcpp::SignalHandlerOptions::None);
+    rclcpp::init(argc, argv, rclcpp::InitOptions(), rclcpp::SignalHandlerOptions::None);
     auto node = std::make_shared<rclcpp::Node>("sas_robot_driver_ur_joint_space_example_node_cpp");
 
     std::string robot_topic_name;
@@ -59,27 +59,27 @@ int main(int argc, char** argv)
     sas::RobotDriverClient rdi(node, "ur_1_sim");
 
     // Wait for RobotDriverClient to be enabled
-    while(!rdi.is_enabled() && !kill_this_process)
+    while (!rdi.is_enabled() && !kill_this_process)
     {
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
         rclcpp::spin_some(node);
     }
 
     // Get topic information
-    RCLCPP_INFO_STREAM(node->get_logger(),"topic_prefix = " << rdi.get_topic_prefix());
+    RCLCPP_INFO_STREAM(node->get_logger(), "topic_prefix = " << rdi.get_topic_prefix());
 
     // Read the values sent by the RobotDriverServer
     auto joint_positions = rdi.get_joint_positions();
-    RCLCPP_INFO_STREAM(node->get_logger(),"joint positions = " << joint_positions);
-
+    RCLCPP_INFO_STREAM(node->get_logger(), "joint positions = " << joint_positions);
 
     // For some iterations. Note that this can be stopped with CTRL+C.
-    for(auto i=0;i<5000;++i)
+    for (auto i = 0; i < 5000; ++i)
     {
         clock.update_and_sleep();
 
         // Move the joints
-        auto target_joint_positions = joint_positions + Eigen::VectorXd::Ones(joint_positions.size())*deg2rad(10.0 * sin(i / (50.0 * pi)));
+        auto target_joint_positions =
+            joint_positions + Eigen::VectorXd::Ones(joint_positions.size()) * deg2rad(10.0 * sin(i / (50.0 * pi)));
         // print(target_joint_positions)
         rdi.send_target_joint_positions(target_joint_positions);
 
@@ -87,13 +87,12 @@ int main(int argc, char** argv)
     }
 
     // Statistics
-    RCLCPP_INFO_STREAM(node->get_logger(),"Statistics for the entire loop");
+    RCLCPP_INFO_STREAM(node->get_logger(), "Statistics for the entire loop");
 
-    RCLCPP_INFO_STREAM(node->get_logger(),"  Mean computation time: " << clock.get_statistics(
+    RCLCPP_INFO_STREAM(node->get_logger(), "  Mean computation time: " << clock.get_statistics(
                                                sas::Statistics::Mean, sas::Clock::TimeType::Computational));
-    RCLCPP_INFO_STREAM(node->get_logger(),"  Mean idle time: " << clock.get_statistics(
-                                               sas::Statistics::Mean, sas::Clock::TimeType::Idle));
-    RCLCPP_INFO_STREAM(node->get_logger(),"  Mean effective thread sampling time: " << clock.get_statistics(
+    RCLCPP_INFO_STREAM(node->get_logger(),
+                       "  Mean idle time: " << clock.get_statistics(sas::Statistics::Mean, sas::Clock::TimeType::Idle));
+    RCLCPP_INFO_STREAM(node->get_logger(), "  Mean effective thread sampling time: " << clock.get_statistics(
                                                sas::Statistics::Mean, sas::Clock::TimeType::EffectiveSampling));
-
 }
